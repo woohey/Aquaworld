@@ -220,3 +220,119 @@ select {
   color: var(--text);
   cursor: pointer;
 }
+
+.map-stage {
+  background:
+    radial-gradient(circle at 20% 35%, rgba(82, 211, 178, 0.15), transparent 22%),
+    radial-gradient(circle at 78% 40%, rgba(82, 164, 255, 0.16), transparent 25%),
+    linear-gradient(180deg, rgba(5, 16, 24, 0.96), rgba(5, 17, 23, 0.82));
+}
+
+.map-waterlines span {
+  position: absolute;
+  width: 62%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(140, 230, 255, 0.28), transparent);
+  transform: rotate(-16deg);
+}
+
+.map-waterlines span:nth-child(1) {
+  left: 8%;
+  top: 30%;
+}
+
+.map-waterlines span:nth-child(2) {
+  left: 22%;
+  top: 55%;
+}
+
+.map-waterlines span:nth-child(3) {
+  left: 10%;
+  top: 76%;
+}
+
+.habitat-node,
+.fish-marker {
+  position: absolute;
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+}
+
+.habitat-node__orb {
+  display: block;
+  width: 82px;
+  height: 58px;
+  border: 1px solid color-mix(in srgb, var(--node-glow), transparent 40%);
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 38%, var(--node-secondary), var(--node-primary) 58%, rgba(2, 8, 12, 0.35));
+  box-shadow: 0 0 32px color-mix(in srgb, var(--node-glow), transparent 55%);
+  opacity: 0.8;
+}
+
+.habitat-node.is-selected .habitat-node__orb {
+  opacity: 1;
+  box-shadow: 0 0 42px color-mix(in srgb, var(--node-glow), transparent 30%);
+}
+
+.habitat-node__name {
+  display: block;
+  margin-top: 8px;
+  max-width: 120px;
+  color: #dffbff;
+  font-size: 12px;
+  line-height: 1.35;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+.habitat-node__name-text {
+  display: block;
+}
+
+.habitat-node__name small {
+  display: block;
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.25;
+}
+
+.fish-marker {
+  display: grid;
+  justify-items: center;
+  gap: 5px;
+  animation: drift 5s ease-in-out infinite;
+}
+
+.fish-marker__shape {
+  width: 34px;
+  height: 16px;
+  border-radius: 50%;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.88), var(--aqua));
+  box-shadow: 0 0 18px rgba(110, 231, 247, 0.28);
+}
+
+.fish-marker.is-selected .fish-marker__shape {
+  outline: 2px solid var(--amber);
+}
+
+.fish-marker__label {
+  border-radius: 999px;
+  padding: 3px 7px;
+  background: rgba(2, 8, 12, 0.68);
+  color: #eafcff;
+  font-size: 11px;
+}
+
+@keyframes drift {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+
+  50% {
+    translate: 6px -5px;
+  }
+}

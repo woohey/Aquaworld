@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import { FilterRail } from './components/FilterRail';
+import { HabitatMap } from './components/HabitatMap';
 import { TopBar } from './components/TopBar';
 import { fish } from './data/fish';
 import { habitats } from './data/habitats';
@@ -41,10 +42,18 @@ export default function App() {
             setSelectedFishId(null);
           }}
         />
-        <section className="map-stage">
-          <p>{selectedHabitat.description}</p>
-          <p>当前可见鱼种：{visibleFish.length}</p>
-        </section>
+        <HabitatMap
+          habitats={habitats}
+          fish={visibleFish}
+          selectedHabitatId={selectedHabitatId}
+          selectedFishId={selectedFishId}
+          onHabitatSelect={(habitatId) => {
+            setSelectedHabitatId(habitatId);
+            setSelectedFishId(null);
+            setFilters((current) => ({ ...current, habitatId }));
+          }}
+          onFishSelect={setSelectedFishId}
+        />
         <aside className="detail-panel">
           <h2>{selectedFish ? selectedFish.chineseName : selectedHabitat.subtitle}</h2>
         </aside>
