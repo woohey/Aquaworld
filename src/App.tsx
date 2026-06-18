@@ -6,10 +6,13 @@ import { habitats } from './data/habitats';
 import { defaultFilters, type FishFilters } from './types/domain';
 import { filterFish } from './utils/filterFish';
 
+const initialHabitatId = habitats[0].id;
+const createHabitatFilters = (habitatId: string): FishFilters => ({ ...defaultFilters, habitatId });
+
 export default function App() {
-  const [selectedHabitatId, setSelectedHabitatId] = useState(habitats[0].id);
+  const [selectedHabitatId, setSelectedHabitatId] = useState(initialHabitatId);
   const [selectedFishId, setSelectedFishId] = useState<string | null>(null);
-  const [filters, setFilters] = useState<FishFilters>(defaultFilters);
+  const [filters, setFilters] = useState<FishFilters>(() => createHabitatFilters(initialHabitatId));
   const [searchQuery, setSearchQuery] = useState('');
 
   const selectedHabitat = habitats.find((habitat) => habitat.id === selectedHabitatId) ?? habitats[0];
@@ -31,8 +34,10 @@ export default function App() {
             setFilters((current) => ({ ...current, habitatId }));
           }}
           onReset={() => {
-            setFilters(defaultFilters);
-            setSelectedHabitatId(habitats[0].id);
+            const habitatId = habitats[0].id;
+
+            setFilters(createHabitatFilters(habitatId));
+            setSelectedHabitatId(habitatId);
             setSelectedFishId(null);
           }}
         />

@@ -23,7 +23,22 @@ const careOptions: Array<{ value: CareLevel | 'all'; label: string }> = [
   { value: 'advanced', label: '进阶' },
 ];
 
-const colorOptions = ['all', 'blue', 'red', 'yellow', 'orange', 'silver', 'black', 'green', 'multicolor'];
+const colorOptions = [
+  'all',
+  'blue',
+  'red',
+  'yellow',
+  'orange',
+  'silver',
+  'black',
+  'green',
+  'multicolor',
+  'purple',
+  'cream',
+  'brown',
+  'white',
+  'gold',
+];
 
 export function FilterRail({
   habitats,
@@ -49,28 +64,46 @@ export function FilterRail({
         </select>
       </label>
 
-      <label>
-        水温 {filters.temperature ?? '全部'}°C
-        <input
-          type="range"
-          min="16"
-          max="30"
-          value={filters.temperature ?? 23}
-          onChange={(event) => onFiltersChange({ ...filters, temperature: Number(event.target.value) })}
-        />
-      </label>
+      <div className="range-filter">
+        <label>
+          水温 {filters.temperature ?? '全部'}°C
+          <input
+            type="range"
+            min="16"
+            max="30"
+            value={filters.temperature ?? 23}
+            onChange={(event) => onFiltersChange({ ...filters, temperature: Number(event.target.value) })}
+          />
+        </label>
+        <button
+          type="button"
+          className="filter-reset-button"
+          onClick={() => onFiltersChange({ ...filters, temperature: null })}
+        >
+          全部水温
+        </button>
+      </div>
 
-      <label>
-        pH {filters.ph ?? '全部'}
-        <input
-          type="range"
-          min="4.5"
-          max="8.8"
-          step="0.1"
-          value={filters.ph ?? 7}
-          onChange={(event) => onFiltersChange({ ...filters, ph: Number(event.target.value) })}
-        />
-      </label>
+      <div className="range-filter">
+        <label>
+          pH {filters.ph ?? '全部'}
+          <input
+            type="range"
+            min="4.5"
+            max="8.8"
+            step="0.1"
+            value={filters.ph ?? 7}
+            onChange={(event) => onFiltersChange({ ...filters, ph: Number(event.target.value) })}
+          />
+        </label>
+        <button
+          type="button"
+          className="filter-reset-button"
+          onClick={() => onFiltersChange({ ...filters, ph: null })}
+        >
+          全部 pH
+        </button>
+      </div>
 
       <label>
         性格
@@ -86,16 +119,25 @@ export function FilterRail({
         </select>
       </label>
 
-      <label>
-        最大体长 {filters.maxAdultSizeCm ?? '全部'} cm
-        <input
-          type="range"
-          min="3"
-          max="30"
-          value={filters.maxAdultSizeCm ?? 30}
-          onChange={(event) => onFiltersChange({ ...filters, maxAdultSizeCm: Number(event.target.value) })}
-        />
-      </label>
+      <div className="range-filter">
+        <label>
+          最大体长 {filters.maxAdultSizeCm ?? '全部'} cm
+          <input
+            type="range"
+            min="3"
+            max="30"
+            value={filters.maxAdultSizeCm ?? 30}
+            onChange={(event) => onFiltersChange({ ...filters, maxAdultSizeCm: Number(event.target.value) })}
+          />
+        </label>
+        <button
+          type="button"
+          className="filter-reset-button"
+          onClick={() => onFiltersChange({ ...filters, maxAdultSizeCm: null })}
+        >
+          全部体长
+        </button>
+      </div>
 
       <label>
         色彩

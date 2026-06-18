@@ -196,6 +196,22 @@ select {
   color: var(--text);
 }
 
+.range-filter {
+  display: grid;
+  gap: 8px;
+}
+
+.filter-reset-button {
+  justify-self: start;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 6px 10px;
+  background: rgba(117, 230, 180, 0.08);
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 12px;
+}
+
 .secondary-button {
   border: 1px solid var(--line);
   border-radius: 12px;
