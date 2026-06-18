@@ -28,6 +28,7 @@ export default function App() {
     setFilters(createHabitatFilters(habitatId));
     setSelectedHabitatId(habitatId);
     setSelectedFishId(null);
+    setSearchQuery('');
   };
 
   return (

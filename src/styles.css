@@ -115,7 +115,7 @@ select {
   display: grid;
   grid-template-columns: minmax(220px, 260px) minmax(0, 1fr) minmax(280px, 320px);
   gap: 16px;
-  height: calc(100vh - 86px);
+  min-height: calc(100vh - 86px);
   padding: 12px 24px 24px;
 }
 

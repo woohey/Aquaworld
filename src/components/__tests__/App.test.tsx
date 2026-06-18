@@ -35,4 +35,21 @@ describe('App', () => {
     expect(screen.queryByRole('heading', { name: '霓虹灯' })).not.toBeInTheDocument();
     expect(screen.getByRole('heading', { name: '酸性软水里的霓虹鱼群' })).toBeInTheDocument();
   });
+
+  it('clears search when resetting from the empty fish state', async () => {
+    const user = userEvent.setup();
+    render(<App />);
+
+    const search = screen.getByLabelText('搜索鱼种');
+    await user.type(search, 'zzzz-no-fish');
+    expect(screen.getByText('没有符合条件的鱼种')).toBeInTheDocument();
+
+    const emptyState = screen.getByRole('region', { name: '鱼种筛选结果' });
+    await user.click(within(emptyState).getByRole('button', { name: '重置筛选' }));
+
+    expect(search).toHaveValue('');
+    expect(screen.queryByText('没有符合条件的鱼种')).not.toBeInTheDocument();
+    const fishList = screen.getByRole('region', { name: '鱼种列表' });
+    expect(within(fishList).getByRole('button', { name: '霓虹灯 Neon Tetra' })).toBeInTheDocument();
+  });
 });
