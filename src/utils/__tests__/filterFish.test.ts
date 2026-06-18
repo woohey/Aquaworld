@@ -29,4 +29,45 @@ describe('filterFish', () => {
     expect(filterFish(fish, defaultFilters, 'Neon').map((item) => item.id)).toEqual(['neon-tetra']);
     expect(filterFish(fish, defaultFilters, 'Macropodus').map((item) => item.id)).toEqual(['paradise-fish']);
   });
+
+  it('filters fish by temperament', () => {
+    const result = filterFish(fish, {
+      ...defaultFilters,
+      temperament: 'aggressive',
+    }, '');
+
+    expect(result.map((item) => item.id)).toEqual(['mbuna-cichlid']);
+  });
+
+  it('filters fish by maximum adult size', () => {
+    const result = filterFish(fish, {
+      ...defaultFilters,
+      maxAdultSizeCm: 4,
+    }, '');
+
+    expect(result.map((item) => item.id)).toEqual(['neon-tetra', 'shell-dweller', 'white-cloud-minnow']);
+  });
+
+  it('filters fish by color', () => {
+    const result = filterFish(fish, {
+      ...defaultFilters,
+      color: 'cream',
+    }, '');
+
+    expect(result.map((item) => item.id)).toEqual(['shell-dweller']);
+  });
+
+  it('filters fish by care level', () => {
+    const result = filterFish(fish, {
+      ...defaultFilters,
+      careLevel: 'advanced',
+    }, '');
+
+    expect(result.map((item) => item.id)).toEqual(['blue-tang']);
+  });
+
+  it('trims search query and ignores case', () => {
+    expect(filterFish(fish, defaultFilters, '  neon  ').map((item) => item.id)).toEqual(['neon-tetra']);
+    expect(filterFish(fish, defaultFilters, 'MACROPODUS').map((item) => item.id)).toEqual(['paradise-fish']);
+  });
 });

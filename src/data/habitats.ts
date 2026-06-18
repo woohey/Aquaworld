@@ -14,7 +14,7 @@ export const habitats: Habitat[] = [
     visualMood: '暗金、茶色水体、蓝红霓虹光点',
     mapPosition: { x: 22, y: 42 },
     colorPalette: { primary: '#7a4d2b', secondary: '#2cc7ff', glow: '#f5a45d' },
-    representativeFishIds: ['neon-tetra', 'cardinal-tetra', 'discus', 'apistogramma', 'pencilfish', 'corydoras'],
+    representativeFishIds: ['neon-tetra', 'cardinal-tetra'],
   },
   {
     id: 'southeast-asian-streams',
@@ -29,7 +29,7 @@ export const habitats: Habitat[] = [
     visualMood: '浓绿水草、浅金光、橙红鱼影',
     mapPosition: { x: 58, y: 48 },
     colorPalette: { primary: '#2f8f6b', secondary: '#ff8055', glow: '#78ffd6' },
-    representativeFishIds: ['betta', 'pearl-gourami', 'harlequin-rasbora', 'tiger-barb', 'zebra-danio', 'rainbow-shark'],
+    representativeFishIds: ['betta', 'harlequin-rasbora'],
   },
   {
     id: 'african-rift-lakes',
@@ -44,7 +44,7 @@ export const habitats: Habitat[] = [
     visualMood: '钴蓝、岩石灰、亮黄色',
     mapPosition: { x: 48, y: 68 },
     colorPalette: { primary: '#315f9f', secondary: '#f4c542', glow: '#83b7ff' },
-    representativeFishIds: ['mbuna-cichlid', 'shell-dweller', 'frontosa', 'electric-blue-hap', 'blue-dolphin-cichlid', 'butterfly-cichlid'],
+    representativeFishIds: ['mbuna-cichlid', 'shell-dweller'],
   },
   {
     id: 'south-asian-slow-waters',
@@ -59,7 +59,7 @@ export const habitats: Habitat[] = [
     visualMood: '稻田绿、浅褐泥底、银色鱼群',
     mapPosition: { x: 66, y: 62 },
     colorPalette: { primary: '#6f8f45', secondary: '#d7b26d', glow: '#d7ff8a' },
-    representativeFishIds: ['guppy', 'platy', 'molly', 'medaka', 'small-barb', 'blue-gourami'],
+    representativeFishIds: ['guppy', 'platy'],
   },
   {
     id: 'central-american-rivers',
@@ -74,7 +74,7 @@ export const habitats: Habitat[] = [
     visualMood: '河石灰、橙红、墨绿',
     mapPosition: { x: 26, y: 60 },
     colorPalette: { primary: '#5b6b54', secondary: '#ff7b45', glow: '#ffc08a' },
-    representativeFishIds: ['swordtail', 'livebearer', 'firemouth-cichlid', 'convict-cichlid', 'texas-cichlid', 'pearlscale-cichlid'],
+    representativeFishIds: ['swordtail', 'firemouth-cichlid'],
   },
   {
     id: 'coral-reef-shallows',
@@ -89,7 +89,7 @@ export const habitats: Habitat[] = [
     visualMood: '珊瑚粉、荧光蓝、亮黄',
     mapPosition: { x: 78, y: 36 },
     colorPalette: { primary: '#2eb8c7', secondary: '#ff9f7a', glow: '#8df7ff' },
-    representativeFishIds: ['clownfish', 'blue-tang', 'yellow-tang', 'damselfish', 'goby', 'flame-angelfish'],
+    representativeFishIds: ['clownfish', 'blue-tang'],
   },
   {
     id: 'chinese-southern-streams',
@@ -104,6 +104,6 @@ export const habitats: Habitat[] = [
     visualMood: '青绿、米白、浅金、溪石灰',
     mapPosition: { x: 70, y: 52 },
     colorPalette: { primary: '#5f9f8a', secondary: '#d6c27a', glow: '#b7ffe4' },
-    representativeFishIds: ['white-cloud-minnow', 'paradise-fish', 'roundtail-paradise-fish', 'chinese-bitterling', 'chinese-medaka', 'stream-goby'],
+    representativeFishIds: ['white-cloud-minnow', 'paradise-fish'],
   },
 ];
