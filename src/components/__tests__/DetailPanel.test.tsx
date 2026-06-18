@@ -28,4 +28,11 @@ describe('DetailPanel', () => {
     expect(screen.getByText('通常适合')).toBeInTheDocument();
     expect(screen.getByText('cardinal-tetra')).toBeInTheDocument();
   });
+
+  it('maps business color names to stable visual colors', () => {
+    const shellDweller = fish.find((item) => item.id === 'shell-dweller') ?? fish[0];
+    const { container } = render(<DetailPanel habitat={habitats[2]} fish={shellDweller} />);
+
+    expect(container.querySelector('.fish-art span')).toHaveStyle({ '--fish-color': '#f1dfb5' });
+  });
 });

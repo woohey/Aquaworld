@@ -6,7 +6,24 @@ type DetailPanelProps = {
   fish: Fish | null;
 };
 
+const fishColorTokens: Record<string, string> = {
+  black: '#1d2730',
+  blue: '#3ba7ff',
+  brown: '#8b5d3d',
+  cream: '#f1dfb5',
+  gold: '#e9c46a',
+  green: '#58c98f',
+  multicolor: '#6ee7f7',
+  orange: '#ff9a4f',
+  purple: '#b58cff',
+  red: '#ff5f6d',
+  silver: '#d9e7ee',
+  white: '#ffffff',
+  yellow: '#ffd166',
+};
+
 const formatRange = (range: Range, suffix = '') => `${range.min}-${range.max}${suffix}`;
+const getFishColor = (fish: Fish) => fishColorTokens[fish.colors[0]] ?? '#6ee7f7';
 
 export function DetailPanel({ habitat, fish }: DetailPanelProps) {
   if (!fish) {
@@ -44,7 +61,7 @@ export function DetailPanel({ habitat, fish }: DetailPanelProps) {
   return (
     <aside className="detail-panel" aria-label={`${fish.chineseName} 鱼种详情`}>
       <div className="fish-art" aria-hidden="true">
-        <span style={{ '--fish-color': fish.colors[0] } as CSSProperties} />
+        <span style={{ '--fish-color': getFishColor(fish) } as CSSProperties} />
       </div>
       <div className="panel-heading">
         <p>{fish.commonName}</p>
