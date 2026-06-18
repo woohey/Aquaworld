@@ -102,7 +102,7 @@ export const habitats: Habitat[] = [
     phRange: { min: 6.5, max: 7.8 },
     hardnessRange: { min: 4, max: 16 },
     visualMood: '青绿、米白、浅金、溪石灰',
-    mapPosition: { x: 70, y: 52 },
+    mapPosition: { x: 84, y: 54 },
     colorPalette: { primary: '#5f9f8a', secondary: '#d6c27a', glow: '#b7ffe4' },
     representativeFishIds: ['white-cloud-minnow', 'paradise-fish'],
   },

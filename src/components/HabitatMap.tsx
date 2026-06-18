@@ -1,4 +1,5 @@
 import type { CSSProperties } from 'react';
+import { getFishColorToken } from '../data/colorTokens';
 import type { Fish, Habitat } from '../types/domain';
 
 type HabitatMapProps = {
@@ -65,7 +66,7 @@ export function HabitatMap({
             {
               left: `${item.markerPosition.x}%`,
               top: `${item.markerPosition.y}%`,
-              '--fish-color': item.colors[0],
+              '--fish-color': getFishColorToken(item.colors[0]),
             } as CSSProperties
           }
           onClick={() => onFishSelect(item.id)}

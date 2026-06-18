@@ -28,4 +28,23 @@ describe('HabitatMap', () => {
     await user.click(screen.getByRole('button', { name: '霓虹灯 Neon Tetra' }));
     expect(onFishSelect).toHaveBeenCalledWith('neon-tetra');
   });
+
+  it('maps fish marker business colors to visual color tokens', () => {
+    const shellDweller = fish.find((item) => item.id === 'shell-dweller');
+
+    render(
+      <HabitatMap
+        habitats={habitats}
+        fish={shellDweller ? [shellDweller] : []}
+        selectedHabitatId="african-rift-lakes"
+        selectedFishId={null}
+        onHabitatSelect={() => undefined}
+        onFishSelect={() => undefined}
+      />,
+    );
+
+    expect(screen.getByRole('button', { name: '卷贝鱼 Shell Dweller' })).toHaveStyle({
+      '--fish-color': '#f1dfb5',
+    });
+  });
 });
