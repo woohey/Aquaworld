@@ -42,6 +42,7 @@ export function HabitatMap({
           }
           onClick={() => onHabitatSelect(habitat.id)}
           aria-label={habitat.name}
+          aria-pressed={habitat.id === selectedHabitatId}
         >
           <span className="habitat-node__orb" />
           <span className="habitat-node__name">
@@ -69,6 +70,7 @@ export function HabitatMap({
           }
           onClick={() => onFishSelect(item.id)}
           aria-label={`${item.chineseName} ${item.commonName}`}
+          aria-pressed={item.id === selectedFishId}
         >
           <span className="fish-marker__shape" />
           <span className="fish-marker__label">{item.chineseName}</span>

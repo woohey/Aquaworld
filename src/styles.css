@@ -222,6 +222,7 @@ select {
 }
 
 .map-stage {
+  min-height: 520px;
   background:
     radial-gradient(circle at 20% 35%, rgba(82, 211, 178, 0.15), transparent 22%),
     radial-gradient(circle at 78% 40%, rgba(82, 164, 255, 0.16), transparent 25%),
@@ -310,7 +311,7 @@ select {
   width: 34px;
   height: 16px;
   border-radius: 50%;
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.88), var(--aqua));
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.88), var(--fish-color, var(--aqua)));
   box-shadow: 0 0 18px rgba(110, 231, 247, 0.28);
 }
 
@@ -334,5 +335,17 @@ select {
 
   50% {
     translate: 6px -5px;
+  }
+}
+
+@media (max-width: 1120px) {
+  .map-stage {
+    min-height: min(620px, 72vh);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fish-marker {
+    animation: none;
   }
 }

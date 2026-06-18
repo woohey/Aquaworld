@@ -21,4 +21,17 @@ describe('App', () => {
 
     expect(search).toHaveValue('白云');
   });
+
+  it('clears the fish detail when the selected fish is filtered out', async () => {
+    const user = userEvent.setup();
+    render(<App />);
+
+    await user.click(screen.getByRole('button', { name: '霓虹灯 Neon Tetra' }));
+    expect(screen.getByRole('heading', { name: '霓虹灯' })).toBeInTheDocument();
+
+    await user.selectOptions(screen.getByLabelText('色彩'), 'orange');
+
+    expect(screen.queryByRole('heading', { name: '霓虹灯' })).not.toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: '酸性软水里的霓虹鱼群' })).toBeInTheDocument();
+  });
 });

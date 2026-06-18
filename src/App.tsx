@@ -18,7 +18,7 @@ export default function App() {
 
   const selectedHabitat = habitats.find((habitat) => habitat.id === selectedHabitatId) ?? habitats[0];
   const visibleFish = useMemo(() => filterFish(fish, filters, searchQuery), [filters, searchQuery]);
-  const selectedFish = fish.find((item) => item.id === selectedFishId) ?? null;
+  const selectedFish = visibleFish.find((item) => item.id === selectedFishId) ?? null;
 
   return (
     <main className="app-shell">
