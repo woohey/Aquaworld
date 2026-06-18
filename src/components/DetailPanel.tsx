@@ -1,4 +1,5 @@
 import type { CSSProperties } from 'react';
+import { getFishColorToken } from '../data/colorTokens';
 import type { Fish, Habitat, Range } from '../types/domain';
 
 type DetailPanelProps = {
@@ -6,24 +7,8 @@ type DetailPanelProps = {
   fish: Fish | null;
 };
 
-const fishColorTokens: Record<string, string> = {
-  black: '#1d2730',
-  blue: '#3ba7ff',
-  brown: '#8b5d3d',
-  cream: '#f1dfb5',
-  gold: '#e9c46a',
-  green: '#58c98f',
-  multicolor: '#6ee7f7',
-  orange: '#ff9a4f',
-  purple: '#b58cff',
-  red: '#ff5f6d',
-  silver: '#d9e7ee',
-  white: '#ffffff',
-  yellow: '#ffd166',
-};
-
 const formatRange = (range: Range, suffix = '') => `${range.min}-${range.max}${suffix}`;
-const getFishColor = (fish: Fish) => fishColorTokens[fish.colors[0]] ?? '#6ee7f7';
+const getFishColor = (fish: Fish) => getFishColorToken(fish.colors[0]);
 
 export function DetailPanel({ habitat, fish }: DetailPanelProps) {
   if (!fish) {

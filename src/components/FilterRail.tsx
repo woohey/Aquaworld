@@ -1,3 +1,4 @@
+import { fishColorOptions } from '../data/colorTokens';
 import type { CareLevel, FishFilters, Habitat, Temperament } from '../types/domain';
 
 type FilterRailProps = {
@@ -21,23 +22,6 @@ const careOptions: Array<{ value: CareLevel | 'all'; label: string }> = [
   { value: 'easy', label: '容易' },
   { value: 'moderate', label: '中等' },
   { value: 'advanced', label: '进阶' },
-];
-
-const colorOptions = [
-  'all',
-  'blue',
-  'red',
-  'yellow',
-  'orange',
-  'silver',
-  'black',
-  'green',
-  'multicolor',
-  'purple',
-  'cream',
-  'brown',
-  'white',
-  'gold',
 ];
 
 export function FilterRail({
@@ -142,7 +126,7 @@ export function FilterRail({
       <label>
         色彩
         <select value={filters.color} onChange={(event) => onFiltersChange({ ...filters, color: event.target.value })}>
-          {colorOptions.map((color) => (
+          {fishColorOptions.map((color) => (
             <option key={color} value={color}>
               {color === 'all' ? '全部' : color}
             </option>
