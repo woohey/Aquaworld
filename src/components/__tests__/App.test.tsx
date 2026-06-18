@@ -9,7 +9,7 @@ describe('App', () => {
 
     expect(screen.getByText('Aqua Biotope Atlas')).toBeInTheDocument();
     expect(screen.getByText('观赏鱼原生地探索图谱')).toBeInTheDocument();
-    expect(screen.getByText('亚马逊黑水')).toBeInTheDocument();
+    expect(screen.getAllByText('亚马逊黑水').length).toBeGreaterThan(0);
   });
 
   it('updates search input', async () => {

@@ -1,4 +1,6 @@
 import { useMemo, useState } from 'react';
+import { CompatibilityBar } from './components/CompatibilityBar';
+import { DetailPanel } from './components/DetailPanel';
 import { FilterRail } from './components/FilterRail';
 import { HabitatMap } from './components/HabitatMap';
 import { TopBar } from './components/TopBar';
@@ -54,10 +56,9 @@ export default function App() {
           }}
           onFishSelect={setSelectedFishId}
         />
-        <aside className="detail-panel">
-          <h2>{selectedFish ? selectedFish.chineseName : selectedHabitat.subtitle}</h2>
-        </aside>
+        <DetailPanel habitat={selectedHabitat} fish={selectedFish} />
       </section>
+      <CompatibilityBar fish={selectedFish} />
     </main>
   );
 }
