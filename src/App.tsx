@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react';
+import { FilterRail } from './components/FilterRail';
 import { TopBar } from './components/TopBar';
 import { fish } from './data/fish';
 import { habitats } from './data/habitats';
@@ -19,19 +20,22 @@ export default function App() {
     <main className="app-shell">
       <TopBar selectedHabitat={selectedHabitat} searchQuery={searchQuery} onSearchChange={setSearchQuery} />
       <section className="atlas-layout" aria-label="观赏鱼原生地图谱">
-        <aside className="filter-rail">
-          <h2>生态条件</h2>
-          <button
-            type="button"
-            onClick={() => {
-              setFilters(defaultFilters);
-              setSelectedHabitatId(habitats[0].id);
-              setSelectedFishId(null);
-            }}
-          >
-            重置筛选
-          </button>
-        </aside>
+        <FilterRail
+          habitats={habitats}
+          filters={filters}
+          selectedHabitatId={selectedHabitatId}
+          onFiltersChange={setFilters}
+          onHabitatSelect={(habitatId) => {
+            setSelectedHabitatId(habitatId);
+            setSelectedFishId(null);
+            setFilters((current) => ({ ...current, habitatId }));
+          }}
+          onReset={() => {
+            setFilters(defaultFilters);
+            setSelectedHabitatId(habitats[0].id);
+            setSelectedFishId(null);
+          }}
+        />
         <section className="map-stage">
           <p>{selectedHabitat.description}</p>
           <p>当前可见鱼种：{visibleFish.length}</p>
