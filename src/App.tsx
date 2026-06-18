@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import { CompatibilityBar } from './components/CompatibilityBar';
 import { DetailPanel } from './components/DetailPanel';
 import { FilterRail } from './components/FilterRail';
+import { FishList } from './components/FishList';
 import { HabitatMap } from './components/HabitatMap';
 import { TopBar } from './components/TopBar';
 import { fish } from './data/fish';
@@ -21,6 +22,13 @@ export default function App() {
   const selectedHabitat = habitats.find((habitat) => habitat.id === selectedHabitatId) ?? habitats[0];
   const visibleFish = useMemo(() => filterFish(fish, filters, searchQuery), [filters, searchQuery]);
   const selectedFish = visibleFish.find((item) => item.id === selectedFishId) ?? null;
+  const resetFilters = () => {
+    const habitatId = habitats[0].id;
+
+    setFilters(createHabitatFilters(habitatId));
+    setSelectedHabitatId(habitatId);
+    setSelectedFishId(null);
+  };
 
   return (
     <main className="app-shell">
@@ -36,26 +44,28 @@ export default function App() {
             setSelectedFishId(null);
             setFilters((current) => ({ ...current, habitatId }));
           }}
-          onReset={() => {
-            const habitatId = habitats[0].id;
-
-            setFilters(createHabitatFilters(habitatId));
-            setSelectedHabitatId(habitatId);
-            setSelectedFishId(null);
-          }}
+          onReset={resetFilters}
         />
-        <HabitatMap
-          habitats={habitats}
-          fish={visibleFish}
-          selectedHabitatId={selectedHabitatId}
-          selectedFishId={selectedFishId}
-          onHabitatSelect={(habitatId) => {
-            setSelectedHabitatId(habitatId);
-            setSelectedFishId(null);
-            setFilters((current) => ({ ...current, habitatId }));
-          }}
-          onFishSelect={setSelectedFishId}
-        />
+        <div className="map-column">
+          <HabitatMap
+            habitats={habitats}
+            fish={visibleFish}
+            selectedHabitatId={selectedHabitatId}
+            selectedFishId={selectedFishId}
+            onHabitatSelect={(habitatId) => {
+              setSelectedHabitatId(habitatId);
+              setSelectedFishId(null);
+              setFilters((current) => ({ ...current, habitatId }));
+            }}
+            onFishSelect={setSelectedFishId}
+          />
+          <FishList
+            fish={visibleFish}
+            selectedFishId={selectedFishId}
+            onFishSelect={setSelectedFishId}
+            onReset={resetFilters}
+          />
+        </div>
         <DetailPanel habitat={selectedHabitat} fish={selectedFish} />
       </section>
       <CompatibilityBar fish={selectedFish} />

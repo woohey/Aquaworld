@@ -121,7 +121,9 @@ select {
 
 .filter-rail,
 .map-stage,
-.detail-panel {
+.detail-panel,
+.fish-list,
+.empty-state {
   border: 1px solid var(--line);
   background: var(--panel);
   border-radius: 18px;
@@ -138,6 +140,71 @@ select {
   position: relative;
   overflow: hidden;
   padding: 18px;
+}
+
+.map-column {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  gap: 12px;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.fish-list {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 12px;
+  scrollbar-color: rgba(110, 231, 247, 0.42) transparent;
+}
+
+.fish-list button {
+  display: grid;
+  flex: 0 0 132px;
+  gap: 4px;
+  min-width: 0;
+  border: 1px solid rgba(166, 236, 255, 0.18);
+  border-radius: 12px;
+  padding: 10px 12px;
+  background: rgba(3, 12, 18, 0.52);
+  color: var(--text);
+  cursor: pointer;
+  text-align: left;
+}
+
+.fish-list button.is-selected {
+  border-color: var(--amber);
+  background: rgba(255, 197, 107, 0.12);
+  box-shadow: inset 0 0 0 1px rgba(255, 197, 107, 0.22);
+}
+
+.fish-list span,
+.fish-list small {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.fish-list small {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.empty-state {
+  display: grid;
+  justify-items: start;
+  align-content: center;
+  gap: 10px;
+  padding: 16px;
+}
+
+.empty-state h2 {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.4;
 }
 
 .detail-panel {
@@ -309,6 +376,10 @@ select {
     height: auto;
   }
 
+  .map-column {
+    overflow: visible;
+  }
+
   .compatibility-bar {
     grid-template-columns: 1fr;
     margin: 0 24px 24px;
@@ -386,7 +457,7 @@ select {
 }
 
 .map-stage {
-  min-height: 520px;
+  min-height: clamp(420px, 58vh, 520px);
   background:
     radial-gradient(circle at 20% 35%, rgba(82, 211, 178, 0.15), transparent 22%),
     radial-gradient(circle at 78% 40%, rgba(82, 164, 255, 0.16), transparent 25%),
@@ -522,6 +593,15 @@ select {
   .compatibility-bar {
     margin-left: 14px;
     margin-right: 14px;
+  }
+
+  .fish-list,
+  .empty-state {
+    border-radius: 14px;
+  }
+
+  .fish-list button {
+    flex-basis: 124px;
   }
 
   .tag-row span {

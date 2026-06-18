@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, expect, it } from 'vitest';
 import App from '../../App';
@@ -26,7 +26,8 @@ describe('App', () => {
     const user = userEvent.setup();
     render(<App />);
 
-    await user.click(screen.getByRole('button', { name: '霓虹灯 Neon Tetra' }));
+    const map = screen.getByRole('region', { name: '原生地生态图谱' });
+    await user.click(within(map).getByRole('button', { name: '霓虹灯 Neon Tetra' }));
     expect(screen.getByRole('heading', { name: '霓虹灯' })).toBeInTheDocument();
 
     await user.selectOptions(screen.getByLabelText('色彩'), 'orange');
