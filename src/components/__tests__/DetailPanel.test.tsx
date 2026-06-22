@@ -33,6 +33,15 @@ describe('DetailPanel', () => {
     const shellDweller = fish.find((item) => item.id === 'shell-dweller') ?? fish[0];
     const { container } = render(<DetailPanel habitat={habitats[2]} fish={shellDweller} />);
 
-    expect(container.querySelector('.fish-art span')).toHaveStyle({ '--fish-color': '#f1dfb5' });
+    expect(container.querySelector('.fish-art span')).toHaveStyle({ '--fish-color': '#e5d2a8' });
+  });
+
+  it('uses specimen plate hooks for selected fish', () => {
+    const neonTetra = fish.find((item) => item.id === 'neon-tetra') ?? fish[0];
+    const { container } = render(<DetailPanel habitat={habitats[0]} fish={neonTetra} />);
+
+    expect(container.querySelector('.detail-panel')).toHaveClass('detail-panel--specimen');
+    expect(container.querySelector('.fish-art__body')).toHaveStyle({ '--fish-color': '#3f8fb9' });
+    expect(screen.getByLabelText('视觉标签')).toHaveClass('tag-row tag-row--specimen');
   });
 });

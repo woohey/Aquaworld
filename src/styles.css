@@ -239,10 +239,24 @@ select {
 }
 
 .detail-panel {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 14px;
   overflow: auto;
+  background:
+    linear-gradient(180deg, rgba(244, 239, 227, 0.055), transparent 34%),
+    var(--panel);
+}
+
+.detail-panel--specimen::before,
+.detail-panel--habitat::before {
+  position: absolute;
+  inset: 12px;
+  pointer-events: none;
+  border: 1px solid rgba(224, 207, 163, 0.14);
+  border-radius: 12px;
+  content: '';
 }
 
 .detail-panel h3 {
@@ -260,10 +274,10 @@ select {
 
 .story-note {
   margin: 0;
-  border-left: 2px solid var(--aqua);
+  border-left: 2px solid var(--amber);
   padding: 10px 12px;
-  background: rgba(110, 231, 247, 0.07);
-  color: #d8f9ff;
+  background: rgba(216, 201, 138, 0.08);
+  color: #ece2c8;
   font-size: 13px;
   line-height: 1.6;
 }
@@ -278,24 +292,27 @@ select {
 
 .fish-art {
   position: relative;
-  min-height: 108px;
+  min-height: 132px;
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: 14px;
   background:
-    radial-gradient(circle at 30% 45%, rgba(110, 231, 247, 0.22), transparent 32%),
-    linear-gradient(135deg, rgba(117, 230, 180, 0.1), rgba(3, 12, 18, 0.55));
+    radial-gradient(circle at 50% 50%, rgba(216, 201, 138, 0.12), transparent 44%),
+    linear-gradient(135deg, rgba(244, 239, 227, 0.06), rgba(7, 16, 15, 0.62));
 }
 
+.fish-art__body,
 .fish-art span {
   position: absolute;
   left: 50%;
   top: 50%;
   width: min(64%, 190px);
   height: 34px;
-  border-radius: 50%;
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.92), var(--fish-color, var(--aqua)) 72%);
-  box-shadow: 0 0 36px color-mix(in srgb, var(--fish-color, var(--aqua)), transparent 45%);
+  border-radius: 56% 44% 52% 48%;
+  background:
+    radial-gradient(circle at 28% 45%, rgba(244, 239, 227, 0.8), transparent 12%),
+    linear-gradient(90deg, rgba(244, 239, 227, 0.82), var(--fish-color, var(--aqua)) 70%);
+  box-shadow: 0 0 32px color-mix(in srgb, var(--fish-color, var(--aqua)), transparent 52%);
   transform: translate(-50%, -50%);
 }
 
@@ -320,10 +337,10 @@ select {
 
 .stat-grid div {
   min-width: 0;
-  border: 1px solid var(--line);
+  border: 1px solid rgba(224, 207, 163, 0.18);
   border-radius: 12px;
   padding: 10px;
-  background: rgba(3, 12, 18, 0.42);
+  background: rgba(7, 16, 15, 0.36);
 }
 
 .stat-grid dt {
@@ -354,6 +371,12 @@ select {
   color: #dffbf0;
   font-size: 12px;
   white-space: nowrap;
+}
+
+.tag-row--specimen span {
+  border-color: rgba(216, 201, 138, 0.34);
+  background: rgba(216, 201, 138, 0.08);
+  color: #efe7d3;
 }
 
 .compatibility-bar {

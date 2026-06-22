@@ -13,7 +13,7 @@ const getFishColor = (fish: Fish) => getFishColorToken(fish.colors[0]);
 export function DetailPanel({ habitat, fish }: DetailPanelProps) {
   if (!fish) {
     return (
-      <aside className="detail-panel" aria-label={`${habitat.name} 原生地概览`}>
+      <aside className="detail-panel detail-panel--habitat" aria-label={`${habitat.name} 原生地概览`}>
         <div className="panel-heading">
           <p>{habitat.englishName}</p>
           <h2>{habitat.name}</h2>
@@ -44,9 +44,9 @@ export function DetailPanel({ habitat, fish }: DetailPanelProps) {
   }
 
   return (
-    <aside className="detail-panel" aria-label={`${fish.chineseName} 鱼种详情`}>
+    <aside className="detail-panel detail-panel--specimen" aria-label={`${fish.chineseName} 鱼种详情`}>
       <div className="fish-art" aria-hidden="true">
-        <span style={{ '--fish-color': getFishColor(fish) } as CSSProperties} />
+        <span className="fish-art__body" style={{ '--fish-color': getFishColor(fish) } as CSSProperties} />
       </div>
       <div className="panel-heading">
         <p>{fish.commonName}</p>
@@ -81,7 +81,7 @@ export function DetailPanel({ habitat, fish }: DetailPanelProps) {
           <dd>{fish.schooling}</dd>
         </div>
       </dl>
-      <div className="tag-row" aria-label="视觉标签">
+      <div className="tag-row tag-row--specimen" aria-label="视觉标签">
         {fish.visualTags.map((tag) => (
           <span key={tag}>{tag}</span>
         ))}
