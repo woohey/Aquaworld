@@ -872,6 +872,7 @@ select {
 
 .world-scroll-canvas__mist,
 .world-scroll-canvas__paper,
+.world-scroll-canvas__backdrop,
 .world-scroll-canvas__scene,
 .world-scroll-canvas__flow,
 .world-scroll-canvas__content {
@@ -887,62 +888,24 @@ select {
 }
 
 .world-scroll-canvas__paper {
-  inset: 13vh 6vw 8vh;
-  border: 1px solid rgba(178, 148, 74, 0.38);
-  border-radius: 36px 18px 28px 20px;
-  background:
-    radial-gradient(circle at 20% 30%, rgba(120, 164, 144, 0.24), transparent 20%),
-    radial-gradient(circle at 82% 24%, rgba(236, 214, 158, 0.34), transparent 16%),
-    repeating-linear-gradient(95deg, rgba(117, 94, 45, 0.045) 0 1px, transparent 1px 10px),
-    linear-gradient(110deg, #efe9ce 0%, #f8f1d7 38%, #d9e6cf 100%);
+  inset: 5vh 2vw 3vh;
+  border-radius: 32px;
   box-shadow:
-    0 34px 90px rgba(29, 83, 78, 0.28),
-    inset 0 0 65px rgba(71, 112, 94, 0.18);
-  transform: perspective(900px) rotateX(4deg) rotateZ(-1.2deg);
+    0 34px 90px rgba(29, 83, 78, 0.2),
+    inset 0 0 65px rgba(71, 112, 94, 0.08);
 }
 
-.world-scroll-canvas__paper::before {
-  position: absolute;
-  left: -5.4vw;
-  bottom: -1.6vh;
-  width: 16vw;
-  min-width: 150px;
-  height: 9vh;
-  min-height: 62px;
-  border: 1px solid rgba(157, 123, 55, 0.32);
-  border-radius: 999px;
-  background:
-    radial-gradient(circle at 82% 50%, #9b7d42 0 12%, transparent 13%),
-    linear-gradient(90deg, #ded2aa, #fbf3d8 42%, #b59b61 100%);
-  box-shadow: 0 18px 40px rgba(75, 82, 55, 0.24);
-  content: '';
-}
-
-.world-scroll-canvas__paper::after {
-  position: absolute;
-  left: 5vw;
-  bottom: -7vh;
-  width: 22vw;
-  min-width: 180px;
-  height: 11vh;
-  min-height: 74px;
-  background:
-    radial-gradient(ellipse at 28% 10%, rgba(250, 252, 235, 0.76), transparent 18%),
-    linear-gradient(115deg, rgba(236, 255, 247, 0.82), rgba(40, 138, 151, 0.74), rgba(12, 79, 93, 0.18));
-  clip-path: polygon(0 0, 76% 0, 100% 42%, 76% 100%, 8% 72%);
-  filter: blur(0.2px);
-  content: '';
-  animation: water-spill 6s ease-in-out infinite;
-}
-
-.world-scroll-canvas__terrain {
-  width: 100%;
-  height: 100%;
-  overflow: visible;
+.world-scroll-canvas__backdrop {
+  border-radius: 32px;
+  background-image: url('./assets/aquaworld-world-scroll-background.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  filter: saturate(1.04) contrast(1.02);
 }
 
 .world-scroll-canvas__scene {
-  inset: 13vh 6vw 8vh;
+  inset: 5vh 2vw 3vh;
   pointer-events: none;
 }
 
@@ -1032,43 +995,17 @@ select {
   scale: 0.78;
 }
 
-.terrain-shape {
-  fill: rgba(44, 108, 91, 0.19);
-  stroke: rgba(121, 96, 39, 0.48);
-  stroke-width: 0.42;
-}
-
-.terrain-shape--africa {
-  fill: rgba(42, 94, 105, 0.18);
-}
-
-.terrain-shape--asia {
-  fill: rgba(67, 123, 99, 0.16);
-}
-
-.terrain-line {
-  fill: none;
-  stroke: rgba(28, 109, 120, 0.46);
-  stroke-dasharray: 7 5;
-  stroke-width: 0.38;
-  animation: current-dash 12s linear infinite;
-}
-
-.terrain-line--gold {
-  stroke: rgba(174, 132, 49, 0.48);
-  stroke-dasharray: 4 7;
-}
-
 .world-scroll-canvas__flow {
   background:
-    linear-gradient(105deg, transparent 12%, rgba(255, 255, 255, 0.3) 18%, transparent 25%),
-    linear-gradient(112deg, transparent 48%, rgba(117, 223, 225, 0.24) 52%, transparent 58%);
+    radial-gradient(ellipse at 36% 18%, rgba(255, 255, 255, 0.24), transparent 14%),
+    linear-gradient(105deg, transparent 12%, rgba(255, 255, 255, 0.18) 18%, transparent 25%),
+    linear-gradient(112deg, transparent 48%, rgba(117, 223, 225, 0.16) 52%, transparent 58%);
   mix-blend-mode: screen;
   animation: scroll-flow 10s linear infinite;
 }
 
 .world-scroll-canvas__content {
-  inset: 13vh 6vw 8vh;
+  inset: 5vh 2vw 3vh;
 }
 
 .basin-node,
@@ -1081,23 +1018,27 @@ select {
 }
 
 .basin-node {
-  min-width: 112px;
-  min-height: 86px;
+  min-width: 116px;
+  min-height: 66px;
   color: #18312f;
 }
 
 .basin-node__wash {
   position: absolute;
-  inset: 8px 8px 22px;
-  border: 1px solid color-mix(in srgb, var(--habitat-glow), transparent 30%);
-  border-radius: 54% 46% 59% 41%;
+  left: 50%;
+  top: 0;
+  width: 42px;
+  height: 42px;
+  border: 1px solid color-mix(in srgb, var(--habitat-glow), transparent 22%);
+  border-radius: 999px;
   background:
-    radial-gradient(circle at 38% 36%, color-mix(in srgb, var(--habitat-glow), white 18%), transparent 16%),
-    radial-gradient(circle at 56% 54%, color-mix(in srgb, var(--habitat-ink), transparent 10%), var(--habitat-wash) 68%, transparent 72%);
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 245, 0.78), transparent 14%),
+    radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--habitat-glow), transparent 24%), transparent 62%);
   box-shadow:
-    0 0 28px color-mix(in srgb, var(--habitat-glow), transparent 52%),
-    inset 0 0 18px rgba(255, 255, 236, 0.16);
-  opacity: 0.86;
+    0 0 22px color-mix(in srgb, var(--habitat-glow), transparent 38%),
+    inset 0 0 14px rgba(255, 255, 236, 0.36);
+  opacity: 0.92;
+  transform: translateX(-50%);
 }
 
 .basin-node.is-selected .basin-node__wash,
@@ -1119,7 +1060,7 @@ select {
   display: grid;
   gap: 2px;
   justify-items: center;
-  margin-top: 72px;
+  margin-top: 42px;
   padding: 5px 8px;
   border-radius: 999px;
   background: rgba(250, 247, 224, 0.74);
@@ -1412,23 +1353,6 @@ select {
   }
 }
 
-@keyframes current-dash {
-  to {
-    stroke-dashoffset: -48;
-  }
-}
-
-@keyframes water-spill {
-  0%,
-  100% {
-    transform: translateY(0) scaleX(1);
-  }
-
-  50% {
-    transform: translateY(4px) scaleX(1.04);
-  }
-}
-
 @keyframes fish-drift {
   0%,
   100% {
@@ -1470,9 +1394,7 @@ select {
 
 @media (prefers-reduced-motion: reduce) {
   .app-shell--immersive-scroll::after,
-  .terrain-line,
   .world-scroll-canvas__flow,
-  .world-scroll-canvas__paper::after,
   .fish-shadow-marker {
     animation: none;
   }

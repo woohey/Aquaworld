@@ -20,10 +20,19 @@ describe('WorldScrollCanvas', () => {
 
     const canvas = screen.getByRole('region', { name: '沉浸式世界画卷' });
 
+    expect(document.querySelector('.world-scroll-canvas__backdrop')).toBeInTheDocument();
     expect(within(canvas).getAllByRole('button', { name: /流域/ })).toHaveLength(7);
     expect(within(canvas).getByRole('button', { name: '亚马逊黑水 流域' })).toHaveStyle({
-      '--basin-x': '22%',
-      '--basin-y': '42%',
+      '--basin-x': '23%',
+      '--basin-y': '60%',
+    });
+    expect(within(canvas).getByRole('button', { name: '东南亚溪流 流域' })).toHaveStyle({
+      '--basin-x': '76%',
+      '--basin-y': '53%',
+    });
+    expect(within(canvas).getByRole('button', { name: '南亚稻田与缓流水域 流域' })).toHaveStyle({
+      '--basin-x': '66%',
+      '--basin-y': '50%',
     });
   });
 
