@@ -33,7 +33,7 @@ export function FilterRail({
   onReset,
 }: FilterRailProps) {
   return (
-    <aside className="filter-rail">
+    <aside className="filter-rail filter-rail--tuning">
       <div className="panel-heading">
         <p>Ecology Tuning</p>
         <h2>生态条件</h2>

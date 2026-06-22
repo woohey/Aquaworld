@@ -85,4 +85,19 @@ describe('FilterRail', () => {
       expect(screen.getByRole('option', { name: color })).toBeInTheDocument();
     }
   });
+
+  it('uses tuning panel visual hooks', () => {
+    render(
+      <FilterRail
+        habitats={habitats}
+        filters={defaultFilters}
+        selectedHabitatId="amazon-blackwater"
+        onFiltersChange={() => undefined}
+        onHabitatSelect={() => undefined}
+        onReset={() => undefined}
+      />,
+    );
+
+    expect(document.querySelector('.filter-rail')).toHaveClass('filter-rail--tuning');
+  });
 });

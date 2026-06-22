@@ -28,4 +28,18 @@ describe('FishList', () => {
 
     expect(onFishSelect).toHaveBeenCalledWith('neon-tetra');
   });
+
+  it('uses fish tag visual hooks', () => {
+    render(
+      <FishList
+        fish={fish.slice(0, 2)}
+        selectedFishId="neon-tetra"
+        onFishSelect={() => undefined}
+        onReset={() => undefined}
+      />,
+    );
+
+    expect(screen.getByRole('region', { name: '鱼种列表' })).toHaveClass('fish-list fish-list--tags');
+    expect(screen.getByRole('button', { name: '霓虹灯 Neon Tetra' })).toHaveClass('fish-tag is-selected');
+  });
 });

@@ -16,7 +16,7 @@ export function CompatibilityBar({ fish }: CompatibilityBarProps) {
   ];
 
   return (
-    <aside className="compatibility-bar" aria-label={`${fish.chineseName} 混养提示`}>
+    <aside className="compatibility-bar compatibility-bar--note-strip" aria-label={`${fish.chineseName} 混养提示`}>
       {groups.map((group) => (
         <section key={group.label}>
           <h3>{group.label}</h3>

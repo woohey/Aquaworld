@@ -20,12 +20,12 @@ export function FishList({ fish, selectedFishId, onFishSelect, onReset }: FishLi
   }
 
   return (
-    <section className="fish-list" aria-label="鱼种列表">
+    <section className="fish-list fish-list--tags" aria-label="鱼种列表">
       {fish.map((item) => (
         <button
           key={item.id}
           type="button"
-          className={item.id === selectedFishId ? 'is-selected' : ''}
+          className={`fish-tag ${item.id === selectedFishId ? 'is-selected' : ''}`}
           onClick={() => onFishSelect(item.id)}
           aria-label={`${item.chineseName} ${item.commonName}`}
           aria-pressed={item.id === selectedFishId}
