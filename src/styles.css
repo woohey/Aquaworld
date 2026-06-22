@@ -139,7 +139,7 @@ select {
 .map-stage {
   position: relative;
   overflow: hidden;
-  padding: 18px;
+  padding: 0;
 }
 
 .map-column {
@@ -457,15 +457,13 @@ select {
 }
 
 .map-stage {
-  min-height: clamp(420px, 58vh, 520px);
-  background:
-    radial-gradient(circle at 20% 35%, rgba(82, 211, 178, 0.15), transparent 22%),
-    radial-gradient(circle at 78% 40%, rgba(82, 164, 255, 0.16), transparent 25%),
-    linear-gradient(180deg, rgba(5, 16, 24, 0.96), rgba(5, 17, 23, 0.82));
+  min-height: 520px;
+  background: transparent;
 }
 
 .scroll-map-frame {
   position: relative;
+  height: 100%;
   min-height: 100%;
   overflow: hidden;
   border: 1px solid var(--line);
@@ -531,29 +529,6 @@ select {
   z-index: 1;
 }
 
-.map-waterlines span {
-  position: absolute;
-  width: 62%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(140, 230, 255, 0.28), transparent);
-  transform: rotate(-16deg);
-}
-
-.map-waterlines span:nth-child(1) {
-  left: 8%;
-  top: 30%;
-}
-
-.map-waterlines span:nth-child(2) {
-  left: 22%;
-  top: 55%;
-}
-
-.map-waterlines span:nth-child(3) {
-  left: 10%;
-  top: 76%;
-}
-
 .habitat-node,
 .fish-marker {
   position: absolute;
@@ -566,18 +541,24 @@ select {
 
 .habitat-node__orb {
   display: block;
-  width: 82px;
-  height: 58px;
-  border: 1px solid color-mix(in srgb, var(--node-glow), transparent 40%);
-  border-radius: 50%;
-  background: radial-gradient(circle at 40% 38%, var(--node-secondary), var(--node-primary) 58%, rgba(2, 8, 12, 0.35));
-  box-shadow: 0 0 32px color-mix(in srgb, var(--node-glow), transparent 55%);
-  opacity: 0.8;
+  width: 96px;
+  height: 66px;
+  border: 1px solid color-mix(in srgb, var(--habitat-glow), transparent 44%);
+  border-radius: 54% 46% 58% 42%;
+  background:
+    radial-gradient(circle at 42% 38%, color-mix(in srgb, var(--habitat-glow), white 10%), transparent 18%),
+    radial-gradient(circle at 50% 50%, var(--habitat-ink), var(--habitat-wash) 62%, rgba(10, 18, 18, 0.18));
+  box-shadow:
+    0 0 34px color-mix(in srgb, var(--habitat-glow), transparent 58%),
+    inset 0 0 24px rgba(244, 239, 227, 0.08);
+  opacity: 0.78;
 }
 
 .habitat-node.is-selected .habitat-node__orb {
   opacity: 1;
-  box-shadow: 0 0 42px color-mix(in srgb, var(--node-glow), transparent 30%);
+  box-shadow:
+    0 0 46px color-mix(in srgb, var(--habitat-glow), transparent 30%),
+    inset 0 0 28px rgba(244, 239, 227, 0.12);
 }
 
 .habitat-node__name {
@@ -610,11 +591,24 @@ select {
 }
 
 .fish-marker__shape {
-  width: 34px;
-  height: 16px;
-  border-radius: 50%;
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.88), var(--fish-color, var(--aqua)));
-  box-shadow: 0 0 18px rgba(110, 231, 247, 0.28);
+  position: relative;
+  width: 38px;
+  height: 17px;
+  border-radius: 55% 45% 50% 50%;
+  background:
+    radial-gradient(circle at 28% 45%, rgba(244, 239, 227, 0.72), transparent 13%),
+    linear-gradient(90deg, rgba(244, 239, 227, 0.72), var(--fish-color, var(--aqua)) 72%);
+  box-shadow: 0 0 16px color-mix(in srgb, var(--fish-color, var(--aqua)), transparent 55%);
+}
+
+.fish-marker__shape::after {
+  position: absolute;
+  width: 13px;
+  height: 15px;
+  background: inherit;
+  clip-path: polygon(0 50%, 100% 0, 100% 100%);
+  content: '';
+  transform: translate(30px, 1px);
 }
 
 .fish-marker.is-selected .fish-marker__shape {

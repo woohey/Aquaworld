@@ -1,6 +1,7 @@
 import type { CSSProperties } from 'react';
-import { getFishColorToken } from '../data/colorTokens';
+import { getFishColorToken, getHabitatVisualStyle } from '../data/visualTheme';
 import type { Fish, Habitat } from '../types/domain';
+import { ScrollMapFrame } from './ScrollMapFrame';
 
 type HabitatMapProps = {
   habitats: Habitat[];
@@ -21,62 +22,56 @@ export function HabitatMap({
 }: HabitatMapProps) {
   return (
     <section className="map-stage" aria-label="原生地生态图谱">
-      <div className="map-waterlines" aria-hidden="true">
-        <span />
-        <span />
-        <span />
-      </div>
-
-      {habitats.map((habitat) => (
-        <button
-          key={habitat.id}
-          type="button"
-          className={`habitat-node ${habitat.id === selectedHabitatId ? 'is-selected' : ''}`}
-          style={
-            {
-              left: `${habitat.mapPosition.x}%`,
-              top: `${habitat.mapPosition.y}%`,
-              '--node-primary': habitat.colorPalette.primary,
-              '--node-secondary': habitat.colorPalette.secondary,
-              '--node-glow': habitat.colorPalette.glow,
-            } as CSSProperties
-          }
-          onClick={() => onHabitatSelect(habitat.id)}
-          aria-label={habitat.name}
-          aria-pressed={habitat.id === selectedHabitatId}
-        >
-          <span className="habitat-node__orb" />
-          <span className="habitat-node__name">
-            <span className="habitat-node__name-text" aria-hidden="true">
-              {Array.from(habitat.name).map((char, index) => (
-                <span key={`${habitat.id}-${index}`}>{char}</span>
-              ))}
+      <ScrollMapFrame>
+        {habitats.map((habitat) => (
+          <button
+            key={habitat.id}
+            type="button"
+            className={`habitat-node ${habitat.id === selectedHabitatId ? 'is-selected' : ''}`}
+            style={
+              {
+                left: `${habitat.mapPosition.x}%`,
+                top: `${habitat.mapPosition.y}%`,
+                ...getHabitatVisualStyle(habitat),
+              } as CSSProperties
+            }
+            onClick={() => onHabitatSelect(habitat.id)}
+            aria-label={habitat.name}
+            aria-pressed={habitat.id === selectedHabitatId}
+          >
+            <span className="habitat-node__orb" />
+            <span className="habitat-node__name">
+              <span className="habitat-node__name-text" aria-hidden="true">
+                {Array.from(habitat.name).map((char, index) => (
+                  <span key={`${habitat.id}-${index}`}>{char}</span>
+                ))}
+              </span>
+              <small>{habitat.englishName}</small>
             </span>
-            <small>{habitat.englishName}</small>
-          </span>
-        </button>
-      ))}
+          </button>
+        ))}
 
-      {fish.map((item) => (
-        <button
-          key={item.id}
-          type="button"
-          className={`fish-marker ${item.id === selectedFishId ? 'is-selected' : ''}`}
-          style={
-            {
-              left: `${item.markerPosition.x}%`,
-              top: `${item.markerPosition.y}%`,
-              '--fish-color': getFishColorToken(item.colors[0]),
-            } as CSSProperties
-          }
-          onClick={() => onFishSelect(item.id)}
-          aria-label={`${item.chineseName} ${item.commonName}`}
-          aria-pressed={item.id === selectedFishId}
-        >
-          <span className="fish-marker__shape" />
-          <span className="fish-marker__label">{item.chineseName}</span>
-        </button>
-      ))}
+        {fish.map((item) => (
+          <button
+            key={item.id}
+            type="button"
+            className={`fish-marker ${item.id === selectedFishId ? 'is-selected' : ''}`}
+            style={
+              {
+                left: `${item.markerPosition.x}%`,
+                top: `${item.markerPosition.y}%`,
+                '--fish-color': getFishColorToken(item.colors[0]),
+              } as CSSProperties
+            }
+            onClick={() => onFishSelect(item.id)}
+            aria-label={`${item.chineseName} ${item.commonName}`}
+            aria-pressed={item.id === selectedFishId}
+          >
+            <span className="fish-marker__shape" />
+            <span className="fish-marker__label">{item.chineseName}</span>
+          </button>
+        ))}
+      </ScrollMapFrame>
     </section>
   );
 }

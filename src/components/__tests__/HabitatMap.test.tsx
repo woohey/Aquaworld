@@ -47,4 +47,22 @@ describe('HabitatMap', () => {
       '--fish-color': '#e5d2a8',
     });
   });
+
+  it('renders habitat wash nodes inside the scroll-map frame', () => {
+    render(
+      <HabitatMap
+        habitats={habitats}
+        fish={fish.slice(0, 2)}
+        selectedHabitatId="amazon-blackwater"
+        selectedFishId={null}
+        onHabitatSelect={() => undefined}
+        onFishSelect={() => undefined}
+      />,
+    );
+
+    expect(screen.getByRole('region', { name: '水域画卷图谱' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: '亚马逊黑水' })).toHaveStyle({
+      '--habitat-wash': '#3d2d22',
+    });
+  });
 });
