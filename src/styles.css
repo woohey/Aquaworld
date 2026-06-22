@@ -875,6 +875,7 @@ select {
 .world-scroll-canvas__backdrop,
 .world-scroll-canvas__scene,
 .world-scroll-canvas__flow,
+.world-scroll-canvas__motion,
 .world-scroll-canvas__content {
   position: absolute;
   inset: 0;
@@ -913,6 +914,7 @@ select {
   position: absolute;
   width: 24px;
   height: 12px;
+  animation: bird-glide 8.6s ease-in-out infinite;
   opacity: 0.68;
 }
 
@@ -945,12 +947,14 @@ select {
 .scroll-bird--two {
   left: 19%;
   top: 12%;
+  animation-delay: -2.2s;
   scale: 0.72;
 }
 
 .scroll-bird--three {
   right: 17%;
   top: 18%;
+  animation-delay: -4.8s;
   scale: 0.82;
 }
 
@@ -1002,6 +1006,60 @@ select {
     linear-gradient(112deg, transparent 48%, rgba(117, 223, 225, 0.16) 52%, transparent 58%);
   mix-blend-mode: screen;
   animation: scroll-flow 10s linear infinite;
+}
+
+.world-scroll-canvas__motion {
+  inset: 5vh 2vw 3vh;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.scroll-fog,
+.scroll-ripple {
+  position: absolute;
+  display: block;
+  pointer-events: none;
+}
+
+.scroll-fog--lower-left {
+  left: 2%;
+  bottom: 4%;
+  width: min(410px, 28vw);
+  height: min(170px, 18vh);
+  border-radius: 999px;
+  background:
+    radial-gradient(ellipse at 24% 58%, rgba(255, 255, 255, 0.68), transparent 54%),
+    radial-gradient(ellipse at 64% 42%, rgba(238, 249, 237, 0.52), transparent 58%),
+    radial-gradient(ellipse at 88% 66%, rgba(179, 221, 211, 0.3), transparent 60%);
+  filter: blur(16px);
+  mix-blend-mode: screen;
+  opacity: 0.48;
+  animation: fog-drift 13s ease-in-out infinite;
+}
+
+.scroll-ripple--lower-right {
+  right: 5%;
+  bottom: 5%;
+  width: min(390px, 24vw);
+  height: min(124px, 13vh);
+  border: 1px solid rgba(222, 255, 231, 0.34);
+  border-radius: 50%;
+  background:
+    radial-gradient(ellipse at 50% 50%, transparent 42%, rgba(228, 255, 234, 0.18) 45%, transparent 62%),
+    linear-gradient(95deg, transparent 12%, rgba(224, 255, 230, 0.2) 46%, transparent 78%);
+  filter: blur(0.4px);
+  mix-blend-mode: screen;
+  opacity: 0.42;
+  transform: rotate(-3deg);
+  animation: water-ripple 7.2s ease-in-out infinite;
+}
+
+.scroll-ripple--delay {
+  right: 2%;
+  bottom: 2%;
+  scale: 0.72;
+  animation-delay: -3.6s;
+  opacity: 0.32;
 }
 
 .world-scroll-canvas__content {
@@ -1353,6 +1411,49 @@ select {
   }
 }
 
+@keyframes bird-glide {
+  0%,
+  100% {
+    opacity: 0.56;
+    translate: -4px 2px;
+  }
+
+  45% {
+    opacity: 0.82;
+    translate: 15px -7px;
+  }
+
+  70% {
+    translate: 22px -2px;
+  }
+}
+
+@keyframes fog-drift {
+  0%,
+  100% {
+    opacity: 0.4;
+    translate: -4% 0;
+  }
+
+  50% {
+    opacity: 0.58;
+    translate: 8% -8%;
+  }
+}
+
+@keyframes water-ripple {
+  0%,
+  100% {
+    opacity: 0.22;
+    scale: 0.84;
+  }
+
+  50% {
+    opacity: 0.5;
+    scale: 1.08;
+  }
+}
+
 @keyframes fish-drift {
   0%,
   100% {
@@ -1394,6 +1495,9 @@ select {
 
 @media (prefers-reduced-motion: reduce) {
   .app-shell--immersive-scroll::after,
+  .scroll-bird,
+  .scroll-fog,
+  .scroll-ripple,
   .world-scroll-canvas__flow,
   .fish-shadow-marker {
     animation: none;

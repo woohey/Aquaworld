@@ -36,6 +36,11 @@ export function WorldScrollCanvas({
         <span className="scroll-pavilion scroll-pavilion--reef" />
       </div>
       <div className="world-scroll-canvas__flow" aria-hidden="true" />
+      <div className="world-scroll-canvas__motion" aria-hidden="true">
+        <span className="scroll-fog scroll-fog--lower-left" />
+        <span className="scroll-ripple scroll-ripple--lower-right" />
+        <span className="scroll-ripple scroll-ripple--lower-right scroll-ripple--delay" />
+      </div>
       <div className="world-scroll-canvas__content">
         {habitats.map((habitat) => {
           const hasVisibleFish = habitatIdsWithFish.has(habitat.id);

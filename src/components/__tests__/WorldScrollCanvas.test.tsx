@@ -23,17 +23,47 @@ describe('WorldScrollCanvas', () => {
     expect(document.querySelector('.world-scroll-canvas__backdrop')).toBeInTheDocument();
     expect(within(canvas).getAllByRole('button', { name: /流域/ })).toHaveLength(7);
     expect(within(canvas).getByRole('button', { name: '亚马逊黑水 流域' })).toHaveStyle({
-      '--basin-x': '23%',
-      '--basin-y': '60%',
+      '--basin-x': '28%',
+      '--basin-y': '57%',
+    });
+    expect(within(canvas).getByRole('button', { name: '中美洲河流 流域' })).toHaveStyle({
+      '--basin-x': '26%',
+      '--basin-y': '48%',
     });
     expect(within(canvas).getByRole('button', { name: '东南亚溪流 流域' })).toHaveStyle({
-      '--basin-x': '76%',
-      '--basin-y': '53%',
+      '--basin-x': '72%',
+      '--basin-y': '55%',
     });
     expect(within(canvas).getByRole('button', { name: '南亚稻田与缓流水域 流域' })).toHaveStyle({
-      '--basin-x': '66%',
-      '--basin-y': '50%',
+      '--basin-x': '62%',
+      '--basin-y': '47%',
     });
+    expect(within(canvas).getByRole('button', { name: '中国南方溪流与稻田水域 流域' })).toHaveStyle({
+      '--basin-x': '72%',
+      '--basin-y': '40%',
+    });
+    expect(within(canvas).getByRole('button', { name: '珊瑚礁浅滩 流域' })).toHaveStyle({
+      '--basin-x': '81%',
+      '--basin-y': '54%',
+    });
+  });
+
+  it('renders ambient motion layers for birds, fog, and water ripples', () => {
+    render(
+      <WorldScrollCanvas
+        habitats={habitats}
+        fish={fish.slice(0, 2)}
+        selectedHabitatId="amazon-blackwater"
+        selectedFishId={null}
+        onHabitatSelect={() => undefined}
+        onFishSelect={() => undefined}
+      />,
+    );
+
+    expect(document.querySelector('.scroll-bird--one')).toBeInTheDocument();
+    expect(document.querySelector('.world-scroll-canvas__motion')).toBeInTheDocument();
+    expect(document.querySelector('.scroll-fog--lower-left')).toBeInTheDocument();
+    expect(document.querySelectorAll('.scroll-ripple--lower-right')).toHaveLength(2);
   });
 
   it('selects a basin and a fish from the world scroll', async () => {

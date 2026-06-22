@@ -3,13 +3,13 @@ import type { Fish, Habitat } from '../types/domain';
 type Position = { x: number; y: number };
 
 const worldHabitatPositions: Record<string, Position> = {
-  'amazon-blackwater': { x: 23, y: 60 },
-  'central-american-rivers': { x: 18, y: 46 },
+  'amazon-blackwater': { x: 28, y: 57 },
+  'central-american-rivers': { x: 26, y: 48 },
   'african-rift-lakes': { x: 48, y: 62 },
-  'south-asian-slow-waters': { x: 66, y: 50 },
-  'southeast-asian-streams': { x: 76, y: 53 },
-  'chinese-southern-streams': { x: 78, y: 38 },
-  'coral-reef-shallows': { x: 86, y: 58 },
+  'south-asian-slow-waters': { x: 62, y: 47 },
+  'southeast-asian-streams': { x: 72, y: 55 },
+  'chinese-southern-streams': { x: 72, y: 40 },
+  'coral-reef-shallows': { x: 81, y: 54 },
 };
 
 function clamp(value: number, min: number, max: number) {
