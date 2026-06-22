@@ -52,4 +52,12 @@ describe('App', () => {
     const fishList = screen.getByRole('region', { name: '鱼种列表' });
     expect(within(fishList).getByRole('button', { name: '霓虹灯 Neon Tetra' })).toBeInTheDocument();
   });
+
+  it('renders the visual polish shell hooks', () => {
+    render(<App />);
+
+    expect(document.querySelector('.app-shell')).toHaveClass('app-shell--scrollwork');
+    expect(screen.getByText('Aqua Biotope Atlas')).toHaveClass('product-name');
+    expect(document.querySelector('.top-bar__habitat')).toHaveTextContent('亚马逊黑水');
+  });
 });

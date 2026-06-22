@@ -32,7 +32,7 @@ export default function App() {
   };
 
   return (
-    <main className="app-shell">
+    <main className="app-shell app-shell--scrollwork">
       <TopBar selectedHabitat={selectedHabitat} searchQuery={searchQuery} onSearchChange={setSearchQuery} />
       <section className="atlas-layout" aria-label="观赏鱼原生地图谱">
         <FilterRail

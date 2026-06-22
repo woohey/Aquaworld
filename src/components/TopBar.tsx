@@ -14,7 +14,7 @@ export function TopBar({ selectedHabitat, searchQuery, onSearchChange }: TopBarP
         <h1>观赏鱼原生地探索图谱</h1>
       </div>
       <div className="top-bar__context">
-        <span>{selectedHabitat.name}</span>
+        <span className="top-bar__habitat">{selectedHabitat.name}</span>
         <label>
           搜索鱼种
           <input
