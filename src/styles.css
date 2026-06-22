@@ -464,6 +464,73 @@ select {
     linear-gradient(180deg, rgba(5, 16, 24, 0.96), rgba(5, 17, 23, 0.82));
 }
 
+.scroll-map-frame {
+  position: relative;
+  min-height: 100%;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at 18% 22%, rgba(216, 201, 138, 0.14), transparent 28%),
+    linear-gradient(90deg, rgba(19, 38, 39, 0.92), rgba(7, 22, 27, 0.96) 48%, rgba(23, 38, 35, 0.9));
+}
+
+.scroll-map-frame__paper,
+.scroll-map-frame__wash,
+.scroll-map-frame__currents,
+.scroll-map-frame__content {
+  position: absolute;
+  inset: 0;
+}
+
+.scroll-map-frame__paper {
+  opacity: 0.24;
+  background-image:
+    linear-gradient(110deg, rgba(244, 239, 227, 0.05) 0 1px, transparent 1px 8px),
+    radial-gradient(circle at 24% 30%, rgba(244, 239, 227, 0.08), transparent 18%),
+    radial-gradient(circle at 70% 68%, rgba(244, 239, 227, 0.06), transparent 22%);
+}
+
+.scroll-map-frame__wash {
+  filter: blur(24px);
+  opacity: 0.28;
+}
+
+.scroll-map-frame__wash--left {
+  background: radial-gradient(circle at 26% 44%, rgba(216, 185, 106, 0.46), transparent 24%);
+}
+
+.scroll-map-frame__wash--right {
+  background: radial-gradient(circle at 76% 42%, rgba(109, 159, 141, 0.42), transparent 24%);
+}
+
+.scroll-map-frame__currents span {
+  position: absolute;
+  width: 64%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(229, 210, 168, 0.2), transparent);
+  transform: rotate(-14deg);
+}
+
+.scroll-map-frame__currents span:nth-child(1) {
+  left: 8%;
+  top: 28%;
+}
+
+.scroll-map-frame__currents span:nth-child(2) {
+  left: 18%;
+  top: 54%;
+}
+
+.scroll-map-frame__currents span:nth-child(3) {
+  left: 7%;
+  top: 78%;
+}
+
+.scroll-map-frame__content {
+  z-index: 1;
+}
+
 .map-waterlines span {
   position: absolute;
   width: 62%;
