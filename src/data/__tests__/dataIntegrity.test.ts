@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
-import { fishColorTokens } from '../colorTokens';
 import { fish } from '../fish';
 import { habitats } from '../habitats';
+import { fishColorTokens } from '../visualTheme';
 
 const fishIds = new Set(fish.map((item) => item.id));
 const habitatById = new Map(habitats.map((habitat) => [habitat.id, habitat]));

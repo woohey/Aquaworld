@@ -44,7 +44,7 @@ describe('HabitatMap', () => {
     );
 
     expect(screen.getByRole('button', { name: '卷贝鱼 Shell Dweller' })).toHaveStyle({
-      '--fish-color': '#f1dfb5',
+      '--fish-color': '#e5d2a8',
     });
   });
 });
