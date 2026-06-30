@@ -910,53 +910,56 @@ select {
   pointer-events: none;
 }
 
+/* ── Birds (matchboxhero sprite-sheet, white via filter) ── */
+
 .scroll-bird {
   position: absolute;
-  width: 42px;
-  height: 18px;
-  animation: bird-glide 11s linear infinite;
-  opacity: 0.74;
+  width: 88px;
+  height: 125px;
+  opacity: 0;
+  will-change: transform;
+  animation: bird-fly 17s linear infinite;
 }
 
-.scroll-bird::before,
-.scroll-bird::after {
-  position: absolute;
-  top: 5px;
-  width: 22px;
-  height: 11px;
-  border-top: 2px solid rgba(255, 250, 235, 0.92);
-  border-radius: 50%;
-  content: '';
+.scroll-bird__sprite {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/174479/bird-cells-new.svg');
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  will-change: background-position;
+  animation: bird-sprite 1s steps(10) infinite;
+  filter: invert(1) drop-shadow(0 1px 3px rgba(0, 0, 0, 0.15));
 }
 
-.scroll-bird::before {
-  left: 0;
-  transform: rotate(18deg);
-}
-
-.scroll-bird::after {
-  right: 0;
-  transform: rotate(-18deg);
+@keyframes bird-sprite {
+  100% {
+    background-position: -900px 0;
+  }
 }
 
 .scroll-bird--one {
-  left: 16%;
-  top: 10%;
+  top: 12%;
+  animation-delay: -1s;
+  scale: 0.65;
 }
 
 .scroll-bird--two {
-  left: 46%;
-  top: 8%;
-  animation-delay: -3.8s;
-  scale: 0.82;
+  top: 6%;
+  animation-delay: -7s;
+  animation-duration: 19s;
+  scale: 0.42;
 }
 
 .scroll-bird--three {
-  right: 18%;
-  top: 9%;
-  animation-delay: -7.1s;
-  scale: 0.9;
+  top: 10%;
+  animation-delay: -13s;
+  animation-duration: 21s;
+  scale: 0.52;
 }
+
+/* ── Flow layer ── */
 
 .world-scroll-canvas__flow {
   background:
@@ -967,91 +970,54 @@ select {
   animation: scroll-flow 14s ease-in-out infinite;
 }
 
+/* ── Motion container ── */
+
 .world-scroll-canvas__motion {
   inset: 5vh 2vw 3vh;
   overflow: hidden;
   pointer-events: none;
 }
 
-.scroll-cloud,
-.scroll-wave {
+/* ── Waves (multi-layer SVG gentle-wave, parallax) ── */
+
+.scroll-waves {
   position: absolute;
-  display: block;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: clamp(54px, 8vh, 110px);
   pointer-events: none;
-}
-
-.scroll-cloud {
-  width: min(280px, 20vw);
-  height: min(108px, 12vh);
-  border-radius: 999px;
-  background:
-    radial-gradient(circle at 22% 52%, rgba(255, 255, 245, 0.72), transparent 28%),
-    radial-gradient(circle at 52% 42%, rgba(255, 255, 250, 0.64), transparent 30%),
-    radial-gradient(circle at 76% 58%, rgba(221, 247, 241, 0.48), transparent 26%);
-  filter: blur(12px);
   mix-blend-mode: screen;
-  opacity: 0.42;
-  animation: cloud-drift 18s linear infinite;
+  opacity: 0.32;
 }
 
-.scroll-cloud--one {
-  left: 4%;
-  bottom: 2%;
+.scroll-waves__parallax > use {
+  animation: wave-roll 18s cubic-bezier(0.42, 0, 0.58, 1) infinite;
 }
 
-.scroll-cloud--two {
-  left: 42%;
-  top: 3%;
-  animation-delay: -6s;
-  scale: 0.78;
+.scroll-waves__parallax > use:nth-child(1) {
+  fill: rgba(210, 250, 240, 0.52);
+  animation-delay: -1s;
+  animation-duration: 6s;
 }
 
-.scroll-cloud--three {
-  right: 3%;
-  top: 5%;
-  animation-delay: -11s;
-  scale: 0.92;
-}
-
-.scroll-wave {
-  width: min(360px, 26vw);
-  height: 22px;
-  border-radius: 999px;
-  background:
-    radial-gradient(ellipse at 50% 50%, rgba(255, 255, 255, 0.2), transparent 58%),
-    linear-gradient(90deg, transparent, rgba(211, 252, 245, 0.44), transparent);
-  mix-blend-mode: screen;
-  opacity: 0.35;
-  animation: wave-sway 9s ease-in-out infinite;
-}
-
-.scroll-wave::after {
-  position: absolute;
-  inset: 0;
-  border-top: 1px solid rgba(250, 255, 246, 0.46);
-  border-bottom: 1px solid rgba(198, 247, 236, 0.18);
-  border-radius: inherit;
-  content: '';
-}
-
-.scroll-wave--one {
-  right: 8%;
-  bottom: 8%;
-}
-
-.scroll-wave--two {
-  right: 12%;
-  bottom: 5%;
+.scroll-waves__parallax > use:nth-child(2) {
+  fill: rgba(180, 240, 228, 0.44);
   animation-delay: -3s;
-  scale: 0.84;
+  animation-duration: 9s;
 }
 
-.scroll-wave--three {
-  left: 12%;
-  bottom: 10%;
-  width: min(220px, 16vw);
+.scroll-waves__parallax > use:nth-child(3) {
+  fill: rgba(155, 232, 218, 0.34);
   animation-delay: -5s;
-  opacity: 0.26;
+  animation-duration: 13s;
+}
+
+.scroll-waves__parallax > use:nth-child(4) {
+  fill: rgba(130, 225, 210, 0.26);
+  animation-delay: -7s;
+  animation-duration: 18s;
 }
 
 .world-scroll-canvas__content {
@@ -1107,6 +1073,9 @@ select {
     inset 0 0 18px rgba(255, 255, 236, 0.36);
   opacity: 0.92;
   transform: translateX(-50%);
+  transition:
+    opacity 260ms ease,
+    box-shadow 260ms ease;
 }
 
 .basin-node.is-selected .basin-node__field,
@@ -1124,6 +1093,14 @@ select {
     0 0 38px color-mix(in srgb, var(--habitat-glow), transparent 24%),
     0 0 0 2px rgba(193, 156, 70, 0.24),
     inset 0 0 20px rgba(255, 255, 236, 0.22);
+}
+
+.basin-node.is-selected:hover .basin-node__wash,
+.basin-node.is-selected:focus-visible .basin-node__wash {
+  box-shadow:
+    0 0 54px color-mix(in srgb, var(--habitat-glow), transparent 16%),
+    0 0 0 3px rgba(193, 156, 70, 0.36),
+    inset 0 0 26px rgba(255, 255, 240, 0.32);
 }
 
 .basin-node.is-dimmed {
@@ -1172,72 +1149,6 @@ select {
   font-size: 10px;
   font-style: normal;
   line-height: 1.1;
-}
-
-.world-scroll-canvas__overview-card {
-  position: absolute;
-  left: clamp(220px, 22vw, 420px);
-  top: clamp(150px, 28vh, 260px);
-  z-index: 4;
-  width: min(320px, 26vw);
-  padding: 18px 20px;
-  border: 1px solid rgba(248, 238, 208, 0.44);
-  border-radius: 24px;
-  background:
-    linear-gradient(180deg, rgba(52, 88, 85, 0.78), rgba(79, 116, 109, 0.56)),
-    radial-gradient(circle at 20% 0%, color-mix(in srgb, var(--habitat-glow), transparent 72%), transparent 36%);
-  color: #f8f2de;
-  box-shadow:
-    0 18px 48px rgba(31, 72, 68, 0.26),
-    inset 0 0 0 1px rgba(255, 251, 238, 0.08);
-  backdrop-filter: blur(18px);
-}
-
-.world-scroll-canvas__overview-card p,
-.world-scroll-canvas__overview-card h2,
-.world-scroll-canvas__overview-card span,
-.world-scroll-canvas__overview-card dl,
-.world-scroll-canvas__overview-card dt,
-.world-scroll-canvas__overview-card dd {
-  margin: 0;
-}
-
-.world-scroll-canvas__overview-card p {
-  margin-bottom: 6px;
-  color: color-mix(in srgb, var(--habitat-glow), white 24%);
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.world-scroll-canvas__overview-card h2 {
-  margin-bottom: 8px;
-  font-size: 28px;
-  line-height: 1.1;
-}
-
-.world-scroll-canvas__overview-card span {
-  display: block;
-  margin-bottom: 14px;
-  color: rgba(246, 240, 220, 0.9);
-  font-size: 13px;
-  line-height: 1.55;
-}
-
-.world-scroll-canvas__overview-card dl {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
-}
-
-.world-scroll-canvas__overview-card dt {
-  margin-bottom: 3px;
-  color: color-mix(in srgb, var(--habitat-glow), white 18%);
-  font-size: 10px;
-}
-
-.world-scroll-canvas__overview-card dd {
-  font-size: 13px;
 }
 
 .fish-shadow-marker {
@@ -1879,37 +1790,63 @@ select {
   }
 }
 
-@keyframes bird-glide {
-  0%,
-  100% {
-    opacity: 0.44;
-    translate: -12px 4px;
-  }
-
-  50% {
-    opacity: 0.86;
-    translate: 38px -9px;
-  }
-}
-
-@keyframes cloud-drift {
+@keyframes bird-fly {
   0% {
-    transform: translateX(-4%) translateY(0);
+    opacity: 0;
+    transform: translate3d(-15vw, 0, 0) scale(0.35);
   }
 
-  100% {
-    transform: translateX(5%) translateY(-5%);
+  5% {
+    opacity: 0.52;
   }
-}
 
-@keyframes wave-sway {
-  0%,
-  100% {
-    transform: translateX(-4px);
+  10% {
+    transform: translate3d(5vw, 3vh, 0) scale(0.42);
+  }
+
+  20% {
+    transform: translate3d(22vw, 0, 0) scale(0.48);
+  }
+
+  35% {
+    transform: translate3d(42vw, 5vh, 0) scale(0.52);
   }
 
   50% {
-    transform: translateX(10px);
+    transform: translate3d(58vw, 1vh, 0) scale(0.5);
+  }
+
+  60% {
+    transform: translate3d(74vw, 4vh, 0) scale(0.48);
+  }
+
+  75% {
+    transform: translate3d(90vw, 0, 0) scale(0.42);
+    opacity: 0.48;
+  }
+
+  85% {
+    transform: translate3d(105vw, 2vh, 0) scale(0.35);
+    opacity: 0.22;
+  }
+
+  86% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(110vw, 0, 0) scale(0.3);
+  }
+}
+
+@keyframes wave-roll {
+  0% {
+    transform: translate3d(-90px, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(85px, 0, 0);
   }
 }
 
@@ -1982,18 +1919,13 @@ select {
     margin: 18px;
   }
 
-  .world-scroll-canvas__overview-card {
-    left: 180px;
-    top: 140px;
-    width: 280px;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .app-shell--immersive-scroll::after,
   .scroll-bird,
-  .scroll-cloud,
-  .scroll-wave,
+  .scroll-bird__sprite,
+  .scroll-waves__parallax > use,
   .world-scroll-canvas__flow,
   .fish-shadow-marker,
   .biotope-fish-node {

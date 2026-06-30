@@ -21,7 +21,6 @@ export function WorldScrollCanvas({
   onFishSelect,
 }: WorldScrollCanvasProps) {
   const habitatIdsWithFish = new Set(fish.map((item) => item.habitatId));
-  const selectedHabitat = habitats.find((item) => item.id === selectedHabitatId) ?? habitats[0];
 
   return (
     <section className="world-scroll-canvas" aria-label="沉浸式世界画卷">
@@ -30,18 +29,29 @@ export function WorldScrollCanvas({
         <div className="world-scroll-canvas__backdrop" />
       </div>
       <div className="world-scroll-canvas__scene" aria-hidden="true">
-        <span className="scroll-bird scroll-bird--one" />
-        <span className="scroll-bird scroll-bird--two" />
-        <span className="scroll-bird scroll-bird--three" />
+        <span className="scroll-bird scroll-bird--one">
+          <span className="scroll-bird__sprite" />
+        </span>
+        <span className="scroll-bird scroll-bird--two">
+          <span className="scroll-bird__sprite" />
+        </span>
+        <span className="scroll-bird scroll-bird--three">
+          <span className="scroll-bird__sprite" />
+        </span>
       </div>
       <div className="world-scroll-canvas__flow" aria-hidden="true" />
       <div className="world-scroll-canvas__motion" aria-hidden="true">
-        <span className="scroll-cloud scroll-cloud--one" />
-        <span className="scroll-cloud scroll-cloud--two" />
-        <span className="scroll-cloud scroll-cloud--three" />
-        <span className="scroll-wave scroll-wave--one" />
-        <span className="scroll-wave scroll-wave--two" />
-        <span className="scroll-wave scroll-wave--three" />
+        <svg className="scroll-waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 24 150 28" preserveAspectRatio="none">
+          <defs>
+            <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+          </defs>
+          <g className="scroll-waves__parallax">
+            <use href="#gentle-wave" x="48" y="0" />
+            <use href="#gentle-wave" x="48" y="2" />
+            <use href="#gentle-wave" x="48" y="4" />
+            <use href="#gentle-wave" x="48" y="6" />
+          </g>
+        </svg>
       </div>
       <div className="world-scroll-canvas__content">
         {habitats.map((habitat) => {
@@ -108,27 +118,6 @@ export function WorldScrollCanvas({
           );
         })}
 
-        <aside
-          className="world-scroll-canvas__overview-card"
-          style={{ ...getHabitatVisualStyle(selectedHabitat) } as CSSProperties}
-          aria-label={`${selectedHabitat.name} 概述`}
-        >
-          <p>{selectedHabitat.englishName}</p>
-          <h2>{selectedHabitat.name}</h2>
-          <span>{selectedHabitat.subtitle}</span>
-          <dl>
-            <div>
-              <dt>水体</dt>
-              <dd>{selectedHabitat.waterType}</dd>
-            </div>
-            <div>
-              <dt>温度</dt>
-              <dd>
-                {selectedHabitat.temperatureRange.min}-{selectedHabitat.temperatureRange.max}°C
-              </dd>
-            </div>
-          </dl>
-        </aside>
       </div>
     </section>
   );

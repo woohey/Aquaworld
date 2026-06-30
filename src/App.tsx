@@ -7,7 +7,7 @@ import { habitats } from './data/habitats';
 import { defaultFilters, type FishFilters } from './types/domain';
 import { filterFish } from './utils/filterFish';
 
-const initialHabitatId = habitats[0].id;
+const initialHabitatId = '';
 
 type ActiveOverlay =
   | { type: 'biotope' }

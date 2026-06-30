@@ -11,6 +11,7 @@ describe('App', () => {
     expect(screen.getByText('观赏鱼原生地探索图谱')).toBeInTheDocument();
     expect(screen.getByRole('region', { name: '沉浸式世界画卷' })).toBeInTheDocument();
     expect(document.querySelector('.app-shell')).toHaveClass('app-shell--immersive-scroll');
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
   });
 
   it('opens the biotope layer overlay from the world scroll and selects fish inside it', async () => {

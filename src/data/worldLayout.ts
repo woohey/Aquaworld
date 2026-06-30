@@ -3,12 +3,12 @@ import type { Fish, Habitat } from '../types/domain';
 type Position = { x: number; y: number };
 
 const worldHabitatPositions: Record<string, Position> = {
-  'amazon-blackwater': { x: 28, y: 57 },
+  'amazon-blackwater': { x: 31, y: 64 },
   'central-american-rivers': { x: 26, y: 48 },
   'african-rift-lakes': { x: 48, y: 62 },
-  'south-asian-slow-waters': { x: 62, y: 47 },
-  'southeast-asian-streams': { x: 72, y: 55 },
-  'chinese-southern-streams': { x: 72, y: 40 },
+  'south-asian-slow-waters': { x: 60, y: 50 },
+  'southeast-asian-streams': { x: 67, y: 60 },
+  'chinese-southern-streams': { x: 69, y: 46 },
   'coral-reef-shallows': { x: 81, y: 54 },
 };
 
