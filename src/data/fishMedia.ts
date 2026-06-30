@@ -1,0 +1,16 @@
+export const fishPhotoUrls: Record<string, string> = {
+  'neon-tetra': 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Paracheirodon_innesi_01.jpg/320px-Paracheirodon_innesi_01.jpg',
+  'cardinal-tetra': 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Cardinal_tetra.jpg/320px-Cardinal_tetra.jpg',
+  betta: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Betta_splendens_male_crowntail.png/320px-Betta_splendens_male_crowntail.png',
+  'harlequin-rasbora': 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Trigonostigma_heteromorpha.jpg/320px-Trigonostigma_heteromorpha.jpg',
+  'mbuna-cichlid': 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Maylandia_estherae.jpg/320px-Maylandia_estherae.jpg',
+  'shell-dweller': 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Neolamprologus_multifasciatus.jpg/320px-Neolamprologus_multifasciatus.jpg',
+  guppy: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Poecilia_reticulata_male.jpg/320px-Poecilia_reticulata_male.jpg',
+  platy: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Platy_01.jpg/320px-Platy_01.jpg',
+  swordtail: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Xiphophorus_hellerii.jpg/320px-Xiphophorus_hellerii.jpg',
+  'firemouth-cichlid': 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Thorichthys_meeki.jpg/320px-Thorichthys_meeki.jpg',
+  clownfish: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Amphiprion_ocellaris_%28Clown_anemonefish%29.jpg/320px-Amphiprion_ocellaris_%28Clown_anemonefish%29.jpg',
+  'blue-tang': 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Paletten-Doktorfisch_Paracanthurus_hepatus.jpg/320px-Paletten-Doktorfisch_Paracanthurus_hepatus.jpg',
+  'white-cloud-minnow': 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Tanichthys_albonubes.jpg/320px-Tanichthys_albonubes.jpg',
+  'paradise-fish': 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Macropodus_opercularis.jpg/320px-Macropodus_opercularis.jpg',
+};

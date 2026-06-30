@@ -912,19 +912,19 @@ select {
 
 .scroll-bird {
   position: absolute;
-  width: 24px;
-  height: 12px;
-  animation: bird-glide 8.6s ease-in-out infinite;
-  opacity: 0.68;
+  width: 42px;
+  height: 18px;
+  animation: bird-glide 11s linear infinite;
+  opacity: 0.74;
 }
 
 .scroll-bird::before,
 .scroll-bird::after {
   position: absolute;
-  top: 4px;
-  width: 14px;
-  height: 7px;
-  border-top: 2px solid rgba(255, 255, 255, 0.88);
+  top: 5px;
+  width: 22px;
+  height: 11px;
+  border-top: 2px solid rgba(255, 250, 235, 0.92);
   border-radius: 50%;
   content: '';
 }
@@ -940,72 +940,31 @@ select {
 }
 
 .scroll-bird--one {
-  left: 13%;
-  top: 17%;
+  left: 16%;
+  top: 10%;
 }
 
 .scroll-bird--two {
-  left: 19%;
-  top: 12%;
-  animation-delay: -2.2s;
-  scale: 0.72;
-}
-
-.scroll-bird--three {
-  right: 17%;
-  top: 18%;
-  animation-delay: -4.8s;
+  left: 46%;
+  top: 8%;
+  animation-delay: -3.8s;
   scale: 0.82;
 }
 
-.scroll-pavilion {
-  position: absolute;
-  width: 34px;
-  height: 20px;
-  border-bottom: 2px solid rgba(123, 96, 38, 0.46);
-  opacity: 0.5;
-}
-
-.scroll-pavilion::before {
-  position: absolute;
-  left: 4px;
-  top: 2px;
-  width: 26px;
-  height: 10px;
-  border-top: 3px solid rgba(123, 96, 38, 0.52);
-  clip-path: polygon(0 72%, 50% 0, 100% 72%);
-  content: '';
-}
-
-.scroll-pavilion::after {
-  position: absolute;
-  left: 9px;
-  top: 11px;
-  width: 15px;
-  height: 9px;
-  border-left: 2px solid rgba(123, 96, 38, 0.45);
-  border-right: 2px solid rgba(123, 96, 38, 0.45);
-  content: '';
-}
-
-.scroll-pavilion--east {
-  right: 21%;
-  top: 25%;
-}
-
-.scroll-pavilion--reef {
-  right: 10%;
-  top: 18%;
-  scale: 0.78;
+.scroll-bird--three {
+  right: 18%;
+  top: 9%;
+  animation-delay: -7.1s;
+  scale: 0.9;
 }
 
 .world-scroll-canvas__flow {
   background:
-    radial-gradient(ellipse at 36% 18%, rgba(255, 255, 255, 0.24), transparent 14%),
-    linear-gradient(105deg, transparent 12%, rgba(255, 255, 255, 0.18) 18%, transparent 25%),
-    linear-gradient(112deg, transparent 48%, rgba(117, 223, 225, 0.16) 52%, transparent 58%);
+    linear-gradient(180deg, rgba(255, 255, 255, 0.22), transparent 16%),
+    radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.24), transparent 34%),
+    linear-gradient(90deg, transparent, rgba(178, 241, 232, 0.12), transparent);
   mix-blend-mode: screen;
-  animation: scroll-flow 10s linear infinite;
+  animation: scroll-flow 14s ease-in-out infinite;
 }
 
 .world-scroll-canvas__motion {
@@ -1014,52 +973,85 @@ select {
   pointer-events: none;
 }
 
-.scroll-fog,
-.scroll-ripple {
+.scroll-cloud,
+.scroll-wave {
   position: absolute;
   display: block;
   pointer-events: none;
 }
 
-.scroll-fog--lower-left {
-  left: 2%;
-  bottom: 4%;
-  width: min(410px, 28vw);
-  height: min(170px, 18vh);
+.scroll-cloud {
+  width: min(280px, 20vw);
+  height: min(108px, 12vh);
   border-radius: 999px;
   background:
-    radial-gradient(ellipse at 24% 58%, rgba(255, 255, 255, 0.68), transparent 54%),
-    radial-gradient(ellipse at 64% 42%, rgba(238, 249, 237, 0.52), transparent 58%),
-    radial-gradient(ellipse at 88% 66%, rgba(179, 221, 211, 0.3), transparent 60%);
-  filter: blur(16px);
-  mix-blend-mode: screen;
-  opacity: 0.48;
-  animation: fog-drift 13s ease-in-out infinite;
-}
-
-.scroll-ripple--lower-right {
-  right: 5%;
-  bottom: 5%;
-  width: min(390px, 24vw);
-  height: min(124px, 13vh);
-  border: 1px solid rgba(222, 255, 231, 0.34);
-  border-radius: 50%;
-  background:
-    radial-gradient(ellipse at 50% 50%, transparent 42%, rgba(228, 255, 234, 0.18) 45%, transparent 62%),
-    linear-gradient(95deg, transparent 12%, rgba(224, 255, 230, 0.2) 46%, transparent 78%);
-  filter: blur(0.4px);
+    radial-gradient(circle at 22% 52%, rgba(255, 255, 245, 0.72), transparent 28%),
+    radial-gradient(circle at 52% 42%, rgba(255, 255, 250, 0.64), transparent 30%),
+    radial-gradient(circle at 76% 58%, rgba(221, 247, 241, 0.48), transparent 26%);
+  filter: blur(12px);
   mix-blend-mode: screen;
   opacity: 0.42;
-  transform: rotate(-3deg);
-  animation: water-ripple 7.2s ease-in-out infinite;
+  animation: cloud-drift 18s linear infinite;
 }
 
-.scroll-ripple--delay {
-  right: 2%;
+.scroll-cloud--one {
+  left: 4%;
   bottom: 2%;
-  scale: 0.72;
-  animation-delay: -3.6s;
-  opacity: 0.32;
+}
+
+.scroll-cloud--two {
+  left: 42%;
+  top: 3%;
+  animation-delay: -6s;
+  scale: 0.78;
+}
+
+.scroll-cloud--three {
+  right: 3%;
+  top: 5%;
+  animation-delay: -11s;
+  scale: 0.92;
+}
+
+.scroll-wave {
+  width: min(360px, 26vw);
+  height: 22px;
+  border-radius: 999px;
+  background:
+    radial-gradient(ellipse at 50% 50%, rgba(255, 255, 255, 0.2), transparent 58%),
+    linear-gradient(90deg, transparent, rgba(211, 252, 245, 0.44), transparent);
+  mix-blend-mode: screen;
+  opacity: 0.35;
+  animation: wave-sway 9s ease-in-out infinite;
+}
+
+.scroll-wave::after {
+  position: absolute;
+  inset: 0;
+  border-top: 1px solid rgba(250, 255, 246, 0.46);
+  border-bottom: 1px solid rgba(198, 247, 236, 0.18);
+  border-radius: inherit;
+  content: '';
+}
+
+.scroll-wave--one {
+  right: 8%;
+  bottom: 8%;
+}
+
+.scroll-wave--two {
+  right: 12%;
+  bottom: 5%;
+  animation-delay: -3s;
+  scale: 0.84;
+}
+
+.scroll-wave--three {
+  left: 12%;
+  bottom: 10%;
+  width: min(220px, 16vw);
+  animation-delay: -5s;
+  opacity: 0.26;
 }
 
 .world-scroll-canvas__content {
@@ -1076,27 +1068,52 @@ select {
 }
 
 .basin-node {
-  min-width: 116px;
-  min-height: 66px;
+  width: clamp(132px, 11vw, 172px);
+  min-height: 94px;
   color: #18312f;
+}
+
+.basin-node__field {
+  position: absolute;
+  inset: -24px -26px 8px;
+  border: 1px solid color-mix(in srgb, var(--habitat-glow), transparent 24%);
+  border-radius: 45% 55% 48% 52% / 54% 44% 56% 46%;
+  background:
+    radial-gradient(circle at 40% 44%, color-mix(in srgb, var(--node-secondary), white 46%), transparent 0 44%, transparent 72%),
+    radial-gradient(circle at 62% 54%, color-mix(in srgb, var(--node-primary), transparent 12%), transparent 0 64%, transparent 88%);
+  box-shadow:
+    0 18px 38px color-mix(in srgb, var(--habitat-glow), transparent 82%),
+    inset 0 0 24px rgba(255, 250, 230, 0.26);
+  opacity: 0;
+  transform: scale(0.78);
+  transition:
+    opacity 260ms ease,
+    transform 260ms ease;
 }
 
 .basin-node__wash {
   position: absolute;
   left: 50%;
-  top: 0;
-  width: 42px;
-  height: 42px;
+  top: 2px;
+  width: 52px;
+  height: 52px;
   border: 1px solid color-mix(in srgb, var(--habitat-glow), transparent 22%);
   border-radius: 999px;
   background:
-    radial-gradient(circle at 50% 50%, rgba(255, 255, 245, 0.78), transparent 14%),
-    radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--habitat-glow), transparent 24%), transparent 62%);
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 245, 0.78), transparent 16%),
+    radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--habitat-glow), transparent 12%), transparent 64%);
   box-shadow:
-    0 0 22px color-mix(in srgb, var(--habitat-glow), transparent 38%),
-    inset 0 0 14px rgba(255, 255, 236, 0.36);
+    0 0 28px color-mix(in srgb, var(--habitat-glow), transparent 44%),
+    inset 0 0 18px rgba(255, 255, 236, 0.36);
   opacity: 0.92;
   transform: translateX(-50%);
+}
+
+.basin-node.is-selected .basin-node__field,
+.basin-node:hover .basin-node__field,
+.basin-node:focus-visible .basin-node__field {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .basin-node.is-selected .basin-node__wash,
@@ -1118,10 +1135,10 @@ select {
   display: grid;
   gap: 2px;
   justify-items: center;
-  margin-top: 42px;
-  padding: 5px 8px;
+  margin-top: 50px;
+  padding: 6px 10px;
   border-radius: 999px;
-  background: rgba(250, 247, 224, 0.74);
+  background: rgba(250, 247, 224, 0.8);
   box-shadow: 0 10px 24px rgba(32, 83, 76, 0.13);
   backdrop-filter: blur(8px);
 }
@@ -1139,6 +1156,88 @@ select {
   line-height: 1.1;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.basin-node__summary {
+  position: relative;
+  display: grid;
+  gap: 2px;
+  justify-items: center;
+  margin-top: 6px;
+  color: #f7f0da;
+  text-shadow: 0 2px 12px rgba(27, 61, 58, 0.4);
+}
+
+.basin-node__summary em {
+  font-size: 10px;
+  font-style: normal;
+  line-height: 1.1;
+}
+
+.world-scroll-canvas__overview-card {
+  position: absolute;
+  left: clamp(220px, 22vw, 420px);
+  top: clamp(150px, 28vh, 260px);
+  z-index: 4;
+  width: min(320px, 26vw);
+  padding: 18px 20px;
+  border: 1px solid rgba(248, 238, 208, 0.44);
+  border-radius: 24px;
+  background:
+    linear-gradient(180deg, rgba(52, 88, 85, 0.78), rgba(79, 116, 109, 0.56)),
+    radial-gradient(circle at 20% 0%, color-mix(in srgb, var(--habitat-glow), transparent 72%), transparent 36%);
+  color: #f8f2de;
+  box-shadow:
+    0 18px 48px rgba(31, 72, 68, 0.26),
+    inset 0 0 0 1px rgba(255, 251, 238, 0.08);
+  backdrop-filter: blur(18px);
+}
+
+.world-scroll-canvas__overview-card p,
+.world-scroll-canvas__overview-card h2,
+.world-scroll-canvas__overview-card span,
+.world-scroll-canvas__overview-card dl,
+.world-scroll-canvas__overview-card dt,
+.world-scroll-canvas__overview-card dd {
+  margin: 0;
+}
+
+.world-scroll-canvas__overview-card p {
+  margin-bottom: 6px;
+  color: color-mix(in srgb, var(--habitat-glow), white 24%);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.world-scroll-canvas__overview-card h2 {
+  margin-bottom: 8px;
+  font-size: 28px;
+  line-height: 1.1;
+}
+
+.world-scroll-canvas__overview-card span {
+  display: block;
+  margin-bottom: 14px;
+  color: rgba(246, 240, 220, 0.9);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.world-scroll-canvas__overview-card dl {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.world-scroll-canvas__overview-card dt {
+  margin-bottom: 3px;
+  color: color-mix(in srgb, var(--habitat-glow), white 18%);
+  font-size: 10px;
+}
+
+.world-scroll-canvas__overview-card dd {
+  font-size: 13px;
 }
 
 .fish-shadow-marker {
@@ -1193,6 +1292,374 @@ select {
 .fish-shadow-marker.is-selected .fish-shadow-marker__label {
   opacity: 1;
   transform: translate(-50%, 0);
+}
+
+.biotope-layer-overlay {
+  position: absolute;
+  inset: 16px;
+  z-index: 24;
+  overflow: hidden;
+  border: 1px solid rgba(216, 197, 140, 0.32);
+  border-radius: 28px;
+  background: rgba(11, 48, 52, 0.34);
+  box-shadow: 0 36px 96px rgba(16, 51, 50, 0.34);
+  backdrop-filter: blur(14px);
+}
+
+.biotope-layer-overlay__close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 4;
+  width: 46px;
+  height: 46px;
+  border: 1px solid rgba(222, 204, 152, 0.42);
+  border-radius: 999px;
+  background: rgba(12, 55, 57, 0.6);
+  color: #f7f0da;
+  cursor: pointer;
+  font-size: 24px;
+}
+
+.biotope-layer-overlay__topbar {
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  top: 18px;
+  z-index: 3;
+  display: grid;
+  grid-template-columns: minmax(220px, 1.1fr) 1.5fr 1.2fr;
+  gap: 18px;
+  align-items: start;
+  padding: 18px 22px;
+  border: 1px solid rgba(218, 201, 153, 0.34);
+  border-radius: 24px;
+  background: linear-gradient(180deg, rgba(8, 56, 58, 0.84), rgba(13, 63, 63, 0.68));
+  color: #f7f1de;
+  backdrop-filter: blur(14px);
+}
+
+.biotope-layer-overlay__title p,
+.biotope-layer-overlay__title h2,
+.biotope-layer-overlay__summary,
+.biotope-layer-overlay__metrics,
+.biotope-layer-overlay__metrics dt,
+.biotope-layer-overlay__metrics dd {
+  margin: 0;
+}
+
+.biotope-layer-overlay__title p {
+  margin-bottom: 6px;
+  color: color-mix(in srgb, var(--biotope-glow), white 26%);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.biotope-layer-overlay__title h2 {
+  font-size: clamp(26px, 2.4vw, 42px);
+  line-height: 1.08;
+}
+
+.biotope-layer-overlay__summary {
+  padding-top: 8px;
+  color: rgba(244, 237, 216, 0.88);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.biotope-layer-overlay__metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  padding-top: 8px;
+}
+
+.biotope-layer-overlay__metrics dt {
+  margin-bottom: 4px;
+  color: color-mix(in srgb, var(--biotope-glow), white 18%);
+  font-size: 10px;
+}
+
+.biotope-layer-overlay__metrics dd {
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.biotope-layer-overlay__stage {
+  position: absolute;
+  inset: 0;
+}
+
+.biotope-layer-overlay__background,
+.biotope-layer-overlay__veil {
+  position: absolute;
+  inset: 0;
+}
+
+.biotope-layer-overlay__background {
+  background:
+    linear-gradient(180deg, rgba(4, 34, 38, 0.34), transparent 24%),
+    var(--biotope-background) center/cover no-repeat;
+}
+
+.biotope-layer-overlay__veil {
+  background:
+    linear-gradient(90deg, rgba(7, 34, 35, 0.52) 0%, rgba(7, 34, 35, 0.08) 28%, transparent 45%, rgba(7, 34, 35, 0.22) 100%),
+    radial-gradient(circle at 12% 26%, color-mix(in srgb, var(--biotope-primary), transparent 62%), transparent 22%),
+    radial-gradient(circle at 84% 28%, color-mix(in srgb, var(--biotope-secondary), transparent 72%), transparent 28%);
+}
+
+.biotope-layer-overlay__layers {
+  position: absolute;
+  left: 28px;
+  top: 220px;
+  bottom: 36px;
+  z-index: 2;
+  display: grid;
+  align-content: space-between;
+}
+
+.layer-rail {
+  position: relative;
+  display: grid;
+  gap: 4px;
+  padding-left: 44px;
+  color: #f6efdc;
+}
+
+.layer-rail::before {
+  position: absolute;
+  left: 12px;
+  width: 1px;
+  background: linear-gradient(180deg, rgba(236, 226, 185, 0.4), rgba(236, 226, 185, 0.06));
+  content: '';
+}
+
+.layer-rail--top::before {
+  top: 40px;
+  height: 154px;
+}
+
+.layer-rail--middle::before {
+  top: 220px;
+  height: 168px;
+}
+
+.layer-rail__badge {
+  position: relative;
+  display: inline-flex;
+  width: fit-content;
+  border: 1px solid rgba(220, 206, 160, 0.48);
+  border-radius: 999px;
+  padding: 10px 18px;
+  background: rgba(8, 57, 59, 0.58);
+  font-size: 14px;
+}
+
+.layer-rail__badge::before {
+  position: absolute;
+  left: -32px;
+  top: 50%;
+  width: 18px;
+  height: 18px;
+  border: 1px solid rgba(220, 206, 160, 0.48);
+  border-radius: 999px;
+  background: rgba(13, 64, 66, 0.74);
+  transform: translateY(-50%);
+  content: '';
+}
+
+.layer-rail small {
+  color: rgba(245, 239, 219, 0.78);
+  font-size: 12px;
+}
+
+.biotope-layer-overlay__fish-field {
+  position: absolute;
+  inset: 180px 330px 28px 180px;
+  z-index: 2;
+}
+
+.biotope-fish-node {
+  position: absolute;
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+  animation: fish-drift 6.4s ease-in-out infinite;
+  animation-delay: var(--fish-drift-delay);
+}
+
+.biotope-fish-node img,
+.biotope-fish-node__fallback {
+  display: block;
+  width: var(--fish-node-size);
+  height: calc(var(--fish-node-size) * 0.56);
+}
+
+.biotope-fish-node img {
+  object-fit: contain;
+  filter: drop-shadow(0 12px 24px rgba(8, 32, 34, 0.34));
+}
+
+.biotope-fish-node__fallback {
+  position: relative;
+  border-radius: 58% 42% 50% 50%;
+  background:
+    radial-gradient(circle at 24% 48%, rgba(255, 255, 255, 0.78), transparent 14%),
+    linear-gradient(90deg, color-mix(in srgb, var(--biotope-glow), white 36%), var(--biotope-secondary) 72%);
+  box-shadow: 0 0 18px color-mix(in srgb, var(--biotope-glow), transparent 52%);
+}
+
+.biotope-fish-node__fallback::after {
+  position: absolute;
+  right: calc(50% - (var(--fish-node-size) * -0.28));
+  top: calc(50% - 18px);
+  width: 20px;
+  height: 20px;
+  background: inherit;
+  clip-path: polygon(0 50%, 100% 0, 100% 100%);
+  content: '';
+}
+
+.biotope-fish-node__name {
+  border-radius: 999px;
+  padding: 4px 10px;
+  background: rgba(7, 51, 53, 0.62);
+  color: #f7f0da;
+  font-size: 11px;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(-2px);
+  transition:
+    opacity 160ms ease,
+    transform 160ms ease;
+}
+
+.biotope-fish-node:hover .biotope-fish-node__name,
+.biotope-fish-node:focus-visible .biotope-fish-node__name,
+.biotope-fish-node.is-selected .biotope-fish-node__name {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.biotope-fish-node.is-selected img,
+.biotope-fish-node:hover img,
+.biotope-fish-node:focus-visible img,
+.biotope-fish-node.is-selected .biotope-fish-node__fallback,
+.biotope-fish-node:hover .biotope-fish-node__fallback,
+.biotope-fish-node:focus-visible .biotope-fish-node__fallback {
+  filter: drop-shadow(0 0 26px color-mix(in srgb, var(--biotope-glow), transparent 56%));
+}
+
+.biotope-layer-overlay__panel {
+  position: absolute;
+  top: 218px;
+  right: 24px;
+  bottom: 26px;
+  z-index: 3;
+  width: min(330px, 26vw);
+  border: 1px solid rgba(220, 206, 160, 0.42);
+  border-radius: 24px;
+  background: linear-gradient(180deg, rgba(8, 56, 58, 0.84), rgba(12, 64, 66, 0.74));
+  color: #f8f1df;
+  box-shadow: 0 20px 56px rgba(16, 54, 52, 0.28);
+  backdrop-filter: blur(16px);
+}
+
+.biotope-layer-overlay__panel-content {
+  display: grid;
+  gap: 16px;
+  padding: 20px;
+}
+
+.biotope-layer-overlay__panel-head {
+  display: grid;
+  grid-template-columns: 76px minmax(0, 1fr);
+  gap: 14px;
+  align-items: center;
+}
+
+.biotope-layer-overlay__panel-head h3,
+.biotope-layer-overlay__panel-head p,
+.biotope-layer-overlay__panel-head span,
+.biotope-layer-overlay__story,
+.biotope-layer-overlay__detail-grid,
+.biotope-layer-overlay__detail-grid dt,
+.biotope-layer-overlay__detail-grid dd,
+.biotope-layer-overlay__panel-content > h3,
+.biotope-layer-overlay__panel-content > p {
+  margin: 0;
+}
+
+.biotope-layer-overlay__panel-head h3,
+.biotope-layer-overlay__panel-content > h3 {
+  font-size: 28px;
+  line-height: 1.1;
+}
+
+.biotope-layer-overlay__panel-head p {
+  color: rgba(243, 237, 219, 0.8);
+  font-size: 13px;
+}
+
+.biotope-layer-overlay__panel-head span {
+  display: inline-flex;
+  margin-top: 8px;
+  width: fit-content;
+  border-radius: 999px;
+  padding: 6px 10px;
+  background: rgba(223, 196, 112, 0.16);
+  color: color-mix(in srgb, var(--biotope-glow), white 26%);
+  font-size: 12px;
+}
+
+.biotope-layer-overlay__panel-avatar {
+  display: grid;
+  place-items: center;
+  width: 76px;
+  height: 76px;
+  border: 1px solid rgba(220, 206, 160, 0.38);
+  border-radius: 999px;
+  background: rgba(7, 52, 54, 0.62);
+}
+
+.biotope-layer-overlay__panel-avatar img {
+  width: 58px;
+  height: 38px;
+  object-fit: contain;
+}
+
+.biotope-layer-overlay__detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.biotope-layer-overlay__detail-grid div {
+  border-top: 1px solid rgba(220, 206, 160, 0.18);
+  padding-top: 12px;
+}
+
+.biotope-layer-overlay__detail-grid dt {
+  margin-bottom: 4px;
+  color: rgba(240, 230, 189, 0.74);
+  font-size: 10px;
+}
+
+.biotope-layer-overlay__detail-grid dd {
+  font-size: 15px;
+}
+
+.biotope-layer-overlay__story,
+.biotope-layer-overlay__panel-content > p {
+  color: rgba(246, 239, 222, 0.88);
+  font-size: 14px;
+  line-height: 1.72;
 }
 
 .map-info-popover,
@@ -1402,55 +1869,47 @@ select {
 }
 
 @keyframes scroll-flow {
-  from {
-    transform: translateX(-14%);
+  0%,
+  100% {
+    transform: translateX(-6%);
   }
 
-  to {
-    transform: translateX(14%);
+  50% {
+    transform: translateX(6%);
   }
 }
 
 @keyframes bird-glide {
   0%,
   100% {
-    opacity: 0.56;
-    translate: -4px 2px;
-  }
-
-  45% {
-    opacity: 0.82;
-    translate: 15px -7px;
-  }
-
-  70% {
-    translate: 22px -2px;
-  }
-}
-
-@keyframes fog-drift {
-  0%,
-  100% {
-    opacity: 0.4;
-    translate: -4% 0;
+    opacity: 0.44;
+    translate: -12px 4px;
   }
 
   50% {
-    opacity: 0.58;
-    translate: 8% -8%;
+    opacity: 0.86;
+    translate: 38px -9px;
   }
 }
 
-@keyframes water-ripple {
+@keyframes cloud-drift {
+  0% {
+    transform: translateX(-4%) translateY(0);
+  }
+
+  100% {
+    transform: translateX(5%) translateY(-5%);
+  }
+}
+
+@keyframes wave-sway {
   0%,
   100% {
-    opacity: 0.22;
-    scale: 0.84;
+    transform: translateX(-4px);
   }
 
   50% {
-    opacity: 0.5;
-    scale: 1.08;
+    transform: translateX(10px);
   }
 }
 
@@ -1483,23 +1942,61 @@ select {
   }
 
   .map-info-popover,
-  .tuning-drawer {
+  .tuning-drawer,
+  .biotope-layer-overlay {
     position: fixed;
     inset: auto 12px 12px;
-    width: auto;
     max-height: 72vh;
     overflow: auto;
     border-radius: 18px;
+  }
+
+  .biotope-layer-overlay {
+    inset: 84px 12px 12px;
+  }
+
+  .biotope-layer-overlay__topbar {
+    grid-template-columns: 1fr;
+  }
+
+  .biotope-layer-overlay__metrics {
+    grid-template-columns: 1fr;
+  }
+
+  .biotope-layer-overlay__layers {
+    left: 18px;
+    top: 270px;
+  }
+
+  .biotope-layer-overlay__fish-field {
+    inset: 360px 18px 18px 18px;
+    min-height: 340px;
+  }
+
+  .biotope-layer-overlay__panel {
+    position: relative;
+    top: auto;
+    right: auto;
+    bottom: auto;
+    width: auto;
+    margin: 18px;
+  }
+
+  .world-scroll-canvas__overview-card {
+    left: 180px;
+    top: 140px;
+    width: 280px;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .app-shell--immersive-scroll::after,
   .scroll-bird,
-  .scroll-fog,
-  .scroll-ripple,
+  .scroll-cloud,
+  .scroll-wave,
   .world-scroll-canvas__flow,
-  .fish-shadow-marker {
+  .fish-shadow-marker,
+  .biotope-fish-node {
     animation: none;
   }
 

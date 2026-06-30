@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { MapInfoPopover } from './components/MapInfoPopover';
+import { BiotopeLayerOverlay } from './components/BiotopeLayerOverlay';
 import { TuningDrawer } from './components/TuningDrawer';
 import { WorldScrollCanvas } from './components/WorldScrollCanvas';
 import { fish } from './data/fish';
@@ -10,8 +10,7 @@ import { filterFish } from './utils/filterFish';
 const initialHabitatId = habitats[0].id;
 
 type ActiveOverlay =
-  | { type: 'habitat'; habitatId: string }
-  | { type: 'fish'; fishId: string }
+  | { type: 'biotope' }
   | { type: 'tuning' }
   | null;
 
@@ -34,7 +33,7 @@ export default function App() {
   const handleHabitatSelect = (habitatId: string) => {
     setSelectedHabitatId(habitatId);
     setSelectedFishId(null);
-    setActiveOverlay({ type: 'habitat', habitatId });
+    setActiveOverlay({ type: 'biotope' });
   };
   const handleFishSelect = (fishId: string) => {
     const nextFish = visibleFish.find((item) => item.id === fishId) ?? fish.find((item) => item.id === fishId);
@@ -44,15 +43,16 @@ export default function App() {
     }
 
     setSelectedFishId(fishId);
-    setActiveOverlay({ type: 'fish', fishId });
+    setActiveOverlay({ type: 'biotope' });
   };
   const handleFiltersChange = (nextFilters: FishFilters) => {
     setFilters(nextFilters);
     setSelectedFishId((currentFishId) => {
       const nextVisibleFish = filterFish(fish, nextFilters, searchQuery);
       const nextFishStillVisible = nextVisibleFish.some((item) => item.id === currentFishId);
+      const nextHabitatStillVisible = nextVisibleFish.some((item) => item.habitatId === selectedHabitatId);
 
-      if (!nextFishStillVisible && activeOverlay?.type === 'fish') {
+      if ((!nextFishStillVisible || !nextHabitatStillVisible) && activeOverlay?.type === 'biotope') {
         setActiveOverlay(null);
       }
 
@@ -64,21 +64,17 @@ export default function App() {
     setSelectedFishId((currentFishId) => {
       const nextVisibleFish = filterFish(fish, filters, query);
       const nextFishStillVisible = nextVisibleFish.some((item) => item.id === currentFishId);
+      const nextHabitatStillVisible = nextVisibleFish.some((item) => item.habitatId === selectedHabitatId);
 
-      if (!nextFishStillVisible && activeOverlay?.type === 'fish') {
+      if ((!nextFishStillVisible || !nextHabitatStillVisible) && activeOverlay?.type === 'biotope') {
         setActiveOverlay(null);
       }
 
       return nextFishStillVisible ? currentFishId : null;
     });
   };
-  const overlayHabitat =
-    activeOverlay?.type === 'habitat'
-      ? habitats.find((habitat) => habitat.id === activeOverlay.habitatId) ?? selectedHabitat
-      : selectedHabitat;
-  const overlayFish =
-    activeOverlay?.type === 'fish' ? visibleFish.find((item) => item.id === activeOverlay.fishId) ?? null : null;
-  const representativeFish = visibleFish.filter((item) => overlayHabitat.representativeFishIds.includes(item.id));
+  const habitatFish = visibleFish.filter((item) => item.habitatId === selectedHabitat.id);
+  const overlayFish = habitatFish.find((item) => item.id === selectedFishId) ?? null;
 
   return (
     <main className="app-shell app-shell--immersive-scroll">
@@ -99,11 +95,11 @@ export default function App() {
         onFishSelect={handleFishSelect}
       />
 
-      {activeOverlay?.type !== 'tuning' && activeOverlay !== null && (overlayFish || activeOverlay.type === 'habitat') ? (
-        <MapInfoPopover
-          habitat={overlayHabitat}
-          fish={overlayFish}
-          representativeFish={representativeFish}
+      {activeOverlay?.type === 'biotope' ? (
+        <BiotopeLayerOverlay
+          habitat={selectedHabitat}
+          fish={habitatFish}
+          selectedFish={overlayFish}
           onClose={() => setActiveOverlay(null)}
           onFishSelect={handleFishSelect}
         />

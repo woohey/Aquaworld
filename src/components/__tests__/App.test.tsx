@@ -13,16 +13,18 @@ describe('App', () => {
     expect(document.querySelector('.app-shell')).toHaveClass('app-shell--immersive-scroll');
   });
 
-  it('opens basin and fish popovers from the world scroll', async () => {
+  it('opens the biotope layer overlay from the world scroll and selects fish inside it', async () => {
     const user = userEvent.setup();
     render(<App />);
 
     const canvas = screen.getByRole('region', { name: '沉浸式世界画卷' });
-    await user.click(within(canvas).getByRole('button', { name: '中国南方溪流与稻田水域 流域' }));
-    expect(screen.getByRole('dialog', { name: '中国南方溪流与稻田水域 信息' })).toBeInTheDocument();
+    await user.click(within(canvas).getByRole('button', { name: '亚马逊黑水 流域' }));
+    const overlay = screen.getByRole('dialog', { name: '亚马逊黑水 原生鱼层' });
+    expect(overlay).toBeInTheDocument();
+    expect(within(overlay).getByText('上层鱼类')).toBeInTheDocument();
 
-    await user.click(within(canvas).getByRole('button', { name: '霓虹灯 Neon Tetra 鱼影' }));
-    expect(screen.getByRole('dialog', { name: '霓虹灯 信息' })).toBeInTheDocument();
+    await user.click(within(overlay).getByRole('button', { name: '查看霓虹灯鱼层详情' }));
+    expect(within(overlay).getByRole('heading', { name: '霓虹灯' })).toBeInTheDocument();
     expect(screen.getByText('Paracheirodon innesi')).toBeInTheDocument();
   });
 
@@ -42,12 +44,12 @@ describe('App', () => {
 
     const canvas = screen.getByRole('region', { name: '沉浸式世界画卷' });
     await user.click(within(canvas).getByRole('button', { name: '霓虹灯 Neon Tetra 鱼影' }));
-    expect(screen.getByRole('dialog', { name: '霓虹灯 信息' })).toBeInTheDocument();
+    expect(screen.getByRole('dialog', { name: '亚马逊黑水 原生鱼层' })).toBeInTheDocument();
 
     await user.click(screen.getByRole('button', { name: '调境' }));
     await user.selectOptions(screen.getByLabelText('色彩'), 'orange');
 
-    expect(screen.queryByRole('dialog', { name: '霓虹灯 信息' })).not.toBeInTheDocument();
+    expect(screen.queryByRole('dialog', { name: '亚马逊黑水 原生鱼层' })).not.toBeInTheDocument();
   });
 
   it('clears search when resetting from the empty fish state in the tuning drawer', async () => {

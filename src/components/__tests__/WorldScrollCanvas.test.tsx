@@ -34,7 +34,7 @@ describe('WorldScrollCanvas', () => {
       '--basin-x': '72%',
       '--basin-y': '55%',
     });
-    expect(within(canvas).getByRole('button', { name: '南亚稻田与缓流水域 流域' })).toHaveStyle({
+    expect(within(canvas).getByRole('button', { name: '浅水缓流与适应型水域 流域' })).toHaveStyle({
       '--basin-x': '62%',
       '--basin-y': '47%',
     });
@@ -46,9 +46,12 @@ describe('WorldScrollCanvas', () => {
       '--basin-x': '81%',
       '--basin-y': '54%',
     });
+    const overview = within(canvas).getByLabelText('亚马逊黑水 概述');
+    expect(within(overview).getByText('酸性软水')).toBeInTheDocument();
+    expect(within(overview).getByText('24-30°C')).toBeInTheDocument();
   });
 
-  it('renders ambient motion layers for birds, fog, and water ripples', () => {
+  it('renders ambient motion layers for birds, clouds, and water ripples', () => {
     render(
       <WorldScrollCanvas
         habitats={habitats}
@@ -62,8 +65,8 @@ describe('WorldScrollCanvas', () => {
 
     expect(document.querySelector('.scroll-bird--one')).toBeInTheDocument();
     expect(document.querySelector('.world-scroll-canvas__motion')).toBeInTheDocument();
-    expect(document.querySelector('.scroll-fog--lower-left')).toBeInTheDocument();
-    expect(document.querySelectorAll('.scroll-ripple--lower-right')).toHaveLength(2);
+    expect(document.querySelectorAll('.scroll-cloud')).toHaveLength(3);
+    expect(document.querySelectorAll('.scroll-wave')).toHaveLength(3);
   });
 
   it('selects a basin and a fish from the world scroll', async () => {

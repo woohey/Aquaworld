@@ -21,6 +21,7 @@ export function WorldScrollCanvas({
   onFishSelect,
 }: WorldScrollCanvasProps) {
   const habitatIdsWithFish = new Set(fish.map((item) => item.habitatId));
+  const selectedHabitat = habitats.find((item) => item.id === selectedHabitatId) ?? habitats[0];
 
   return (
     <section className="world-scroll-canvas" aria-label="沉浸式世界画卷">
@@ -32,25 +33,27 @@ export function WorldScrollCanvas({
         <span className="scroll-bird scroll-bird--one" />
         <span className="scroll-bird scroll-bird--two" />
         <span className="scroll-bird scroll-bird--three" />
-        <span className="scroll-pavilion scroll-pavilion--east" />
-        <span className="scroll-pavilion scroll-pavilion--reef" />
       </div>
       <div className="world-scroll-canvas__flow" aria-hidden="true" />
       <div className="world-scroll-canvas__motion" aria-hidden="true">
-        <span className="scroll-fog scroll-fog--lower-left" />
-        <span className="scroll-ripple scroll-ripple--lower-right" />
-        <span className="scroll-ripple scroll-ripple--lower-right scroll-ripple--delay" />
+        <span className="scroll-cloud scroll-cloud--one" />
+        <span className="scroll-cloud scroll-cloud--two" />
+        <span className="scroll-cloud scroll-cloud--three" />
+        <span className="scroll-wave scroll-wave--one" />
+        <span className="scroll-wave scroll-wave--two" />
+        <span className="scroll-wave scroll-wave--three" />
       </div>
       <div className="world-scroll-canvas__content">
         {habitats.map((habitat) => {
           const hasVisibleFish = habitatIdsWithFish.has(habitat.id);
           const position = getWorldHabitatPosition(habitat);
+          const isSelected = habitat.id === selectedHabitatId;
 
           return (
             <button
               key={habitat.id}
               type="button"
-              className={`basin-node ${habitat.id === selectedHabitatId ? 'is-selected' : ''} ${hasVisibleFish ? '' : 'is-dimmed'}`}
+              className={`basin-node ${isSelected ? 'is-selected' : ''} ${hasVisibleFish ? '' : 'is-dimmed'}`}
               style={
                 {
                   '--basin-x': `${position.x}%`,
@@ -62,13 +65,20 @@ export function WorldScrollCanvas({
               }
               onClick={() => onHabitatSelect(habitat.id)}
               aria-label={`${habitat.name} 流域`}
-              aria-pressed={habitat.id === selectedHabitatId}
+              aria-pressed={isSelected}
             >
+              <span className="basin-node__field" aria-hidden="true" />
               <span className="basin-node__wash" aria-hidden="true" />
               <span className="basin-node__label">
                 <strong>{habitat.name}</strong>
                 <small>{habitat.englishName}</small>
               </span>
+              {isSelected ? (
+                <span className="basin-node__summary">
+                  <em>{habitat.waterType}</em>
+                  <em>{habitat.temperatureRange.min}-{habitat.temperatureRange.max}°C</em>
+                </span>
+              ) : null}
             </button>
           );
         })}
@@ -97,6 +107,28 @@ export function WorldScrollCanvas({
             </button>
           );
         })}
+
+        <aside
+          className="world-scroll-canvas__overview-card"
+          style={{ ...getHabitatVisualStyle(selectedHabitat) } as CSSProperties}
+          aria-label={`${selectedHabitat.name} 概述`}
+        >
+          <p>{selectedHabitat.englishName}</p>
+          <h2>{selectedHabitat.name}</h2>
+          <span>{selectedHabitat.subtitle}</span>
+          <dl>
+            <div>
+              <dt>水体</dt>
+              <dd>{selectedHabitat.waterType}</dd>
+            </div>
+            <div>
+              <dt>温度</dt>
+              <dd>
+                {selectedHabitat.temperatureRange.min}-{selectedHabitat.temperatureRange.max}°C
+              </dd>
+            </div>
+          </dl>
+        </aside>
       </div>
     </section>
   );
