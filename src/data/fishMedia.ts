@@ -1,16 +1,94 @@
+import neonTetraImg from '../assets/fish/neon-tetra.webp';
+import bettaImg from '../assets/fish/betta.webp';
+import clownfishImg from '../assets/fish/clownfish.webp';
+import discusImg from '../assets/fish/discus.webp';
+import firemouthImg from '../assets/fish/firemouth-cichlid.webp';
+import guppyImg from '../assets/fish/guppy.webp';
+import mbunaImg from '../assets/fish/mbuna-cichlid.webp';
+import whiteCloudImg from '../assets/fish/white-cloud-minnow.webp';
+import cardinalImg from '../assets/fish/cardinal-tetra.webp';
+import harlequinImg from '../assets/fish/harlequin-rasbora.webp';
+import pearlGouramiImg from '../assets/fish/pearl-gourami.webp';
+import shellDwellerImg from '../assets/fish/shell-dweller.webp';
+import swordtailImg from '../assets/fish/swordtail.webp';
+import blueTangImg from '../assets/fish/blue-tang.webp';
+import cherryBarbImg from '../assets/fish/cherry-barb.webp';
+import paradiseFishImg from '../assets/fish/paradise-fish.webp';
+import convictImg from '../assets/fish/convict-cichlid.webp';
+import flameImg from '../assets/fish/flame-angelfish.webp';
+import apistogrammaImg from '../assets/fish/apistogramma.webp';
+import pencilfishImg from '../assets/fish/pencilfish.webp';
+import corydorasImg from '../assets/fish/corydoras.webp';
+import tigerBarbImg from '../assets/fish/tiger-barb.webp';
+import rainbowSharkImg from '../assets/fish/rainbow-shark.webp';
+import frontosaImg from '../assets/fish/frontosa.webp';
+import electricBlueHapImg from '../assets/fish/electric-blue-hap.webp';
+import blueDolphinImg from '../assets/fish/blue-dolphin-cichlid.webp';
+import platyImg from '../assets/fish/platy.webp';
+import mollyImg from '../assets/fish/molly.webp';
+import medakaImg from '../assets/fish/medaka.webp';
+import blueGouramiImg from '../assets/fish/blue-gourami.webp';
+import zebraDanioImg from '../assets/fish/zebra-danio.webp';
+import sailfinMollyImg from '../assets/fish/sailfin-molly.webp';
+import texasCichlidImg from '../assets/fish/texas-cichlid.webp';
+import pearlscaleImg from '../assets/fish/pearlscale-cichlid.webp';
+import lyretailAnthiasImg from '../assets/fish/lyretail-anthias.webp';
+import damselfishImg from '../assets/fish/damselfish.webp';
+import reefGobyImg from '../assets/fish/reef-goby.webp';
+import hillstreamLoachImg from '../assets/fish/hillstream-loach.webp';
+import chineseBitterlingImg from '../assets/fish/chinese-bitterling.webp';
+import chineseMedakaImg from '../assets/fish/chinese-medaka.webp';
+import streamGobyImg from '../assets/fish/stream-goby.webp';
+import butterflyCichlidImg from '../assets/fish/butterfly-cichlid.webp';
+
 export const fishPhotoUrls: Record<string, string> = {
-  'neon-tetra': 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Paracheirodon_innesi_01.jpg/320px-Paracheirodon_innesi_01.jpg',
-  'cardinal-tetra': 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Cardinal_tetra.jpg/320px-Cardinal_tetra.jpg',
-  betta: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Betta_splendens_male_crowntail.png/320px-Betta_splendens_male_crowntail.png',
-  'harlequin-rasbora': 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Trigonostigma_heteromorpha.jpg/320px-Trigonostigma_heteromorpha.jpg',
-  'mbuna-cichlid': 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Maylandia_estherae.jpg/320px-Maylandia_estherae.jpg',
-  'shell-dweller': 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Neolamprologus_multifasciatus.jpg/320px-Neolamprologus_multifasciatus.jpg',
-  guppy: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Poecilia_reticulata_male.jpg/320px-Poecilia_reticulata_male.jpg',
-  platy: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Platy_01.jpg/320px-Platy_01.jpg',
-  swordtail: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Xiphophorus_hellerii.jpg/320px-Xiphophorus_hellerii.jpg',
-  'firemouth-cichlid': 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Thorichthys_meeki.jpg/320px-Thorichthys_meeki.jpg',
-  clownfish: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Amphiprion_ocellaris_%28Clown_anemonefish%29.jpg/320px-Amphiprion_ocellaris_%28Clown_anemonefish%29.jpg',
-  'blue-tang': 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Paletten-Doktorfisch_Paracanthurus_hepatus.jpg/320px-Paletten-Doktorfisch_Paracanthurus_hepatus.jpg',
-  'white-cloud-minnow': 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Tanichthys_albonubes.jpg/320px-Tanichthys_albonubes.jpg',
-  'paradise-fish': 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Macropodus_opercularis.jpg/320px-Macropodus_opercularis.jpg',
+  // Amazon Blackwater
+  'neon-tetra': neonTetraImg,
+  'cardinal-tetra': cardinalImg,
+  discus: discusImg,
+  apistogramma: apistogrammaImg,
+  pencilfish: pencilfishImg,
+  corydoras: corydorasImg,
+  // Southeast Asian Streams
+  betta: bettaImg,
+  'harlequin-rasbora': harlequinImg,
+  'pearl-gourami': pearlGouramiImg,
+  'tiger-barb': tigerBarbImg,
+  'rainbow-shark': rainbowSharkImg,
+  // African Rift Lakes
+  'mbuna-cichlid': mbunaImg,
+  'shell-dweller': shellDwellerImg,
+  frontosa: frontosaImg,
+  'electric-blue-hap': electricBlueHapImg,
+  'blue-dolphin-cichlid': blueDolphinImg,
+  'butterfly-cichlid': butterflyCichlidImg,
+  // Aquarium Adaptables
+  guppy: guppyImg,
+  platy: platyImg,
+  molly: mollyImg,
+  medaka: medakaImg,
+  'cherry-barb': cherryBarbImg,
+  'blue-gourami': blueGouramiImg,
+  'zebra-danio': zebraDanioImg,
+  // Central American Rivers
+  swordtail: swordtailImg,
+  'firemouth-cichlid': firemouthImg,
+  'sailfin-molly': sailfinMollyImg,
+  'convict-cichlid': convictImg,
+  'texas-cichlid': texasCichlidImg,
+  'pearlscale-cichlid': pearlscaleImg,
+  // Coral Reef Shallows
+  clownfish: clownfishImg,
+  'blue-tang': blueTangImg,
+  'lyretail-anthias': lyretailAnthiasImg,
+  damselfish: damselfishImg,
+  goby: reefGobyImg,
+  'flame-angelfish': flameImg,
+  // Chinese Southern Streams
+  'white-cloud-minnow': whiteCloudImg,
+  'paradise-fish': paradiseFishImg,
+  'hillstream-loach': hillstreamLoachImg,
+  'chinese-bitterling': chineseBitterlingImg,
+  'chinese-medaka': chineseMedakaImg,
+  'stream-goby': streamGobyImg,
 };

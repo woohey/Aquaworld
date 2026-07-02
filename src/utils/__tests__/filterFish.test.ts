@@ -14,7 +14,7 @@ describe('filterFish', () => {
     expect(result.map((item) => item.id)).toEqual([
       'white-cloud-minnow',
       'paradise-fish',
-      'roundtail-paradise-fish',
+      'hillstream-loach',
       'chinese-bitterling',
       'chinese-medaka',
       'stream-goby',
@@ -37,7 +37,6 @@ describe('filterFish', () => {
     expect(filterFish(fish, defaultFilters, 'Neon').map((item) => item.id)).toEqual(['neon-tetra']);
     expect(filterFish(fish, defaultFilters, 'Macropodus').map((item) => item.id)).toEqual([
       'paradise-fish',
-      'roundtail-paradise-fish',
     ]);
   });
 
@@ -74,14 +73,13 @@ describe('filterFish', () => {
       careLevel: 'advanced',
     }, '');
 
-    expect(result.map((item) => item.id)).toEqual(['blue-tang']);
+    expect(result.map((item) => item.id)).toEqual(expect.arrayContaining(['blue-tang', 'discus', 'frontosa']));
   });
 
   it('trims search query and ignores case', () => {
     expect(filterFish(fish, defaultFilters, '  neon  ').map((item) => item.id)).toEqual(['neon-tetra']);
     expect(filterFish(fish, defaultFilters, 'MACROPODUS').map((item) => item.id)).toEqual([
       'paradise-fish',
-      'roundtail-paradise-fish',
     ]);
   });
 

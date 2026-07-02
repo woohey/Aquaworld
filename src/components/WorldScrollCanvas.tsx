@@ -1,6 +1,7 @@
 import type { CSSProperties } from 'react';
-import { getFishColorToken, getHabitatVisualStyle } from '../data/visualTheme';
+import { getHabitatVisualStyle } from '../data/visualTheme';
 import { getWorldFishPosition, getWorldHabitatPosition } from '../data/worldLayout';
+import { fishPhotoUrls } from '../data/fishMedia';
 import type { Fish, Habitat } from '../types/domain';
 
 type WorldScrollCanvasProps = {
@@ -58,12 +59,13 @@ export function WorldScrollCanvas({
           const hasVisibleFish = habitatIdsWithFish.has(habitat.id);
           const position = getWorldHabitatPosition(habitat);
           const isSelected = habitat.id === selectedHabitatId;
+          const isAdaptable = habitat.id === 'south-asian-slow-waters';
 
           return (
             <button
               key={habitat.id}
               type="button"
-              className={`basin-node ${isSelected ? 'is-selected' : ''} ${hasVisibleFish ? '' : 'is-dimmed'}`}
+              className={`basin-node ${isSelected ? 'is-selected' : ''} ${hasVisibleFish ? '' : 'is-dimmed'} ${isAdaptable ? 'basin-node--adaptable' : ''}`}
               style={
                 {
                   '--basin-x': `${position.x}%`,
@@ -89,12 +91,16 @@ export function WorldScrollCanvas({
                   <em>{habitat.temperatureRange.min}-{habitat.temperatureRange.max}°C</em>
                 </span>
               ) : null}
+              {isAdaptable ? (
+                <span className="basin-node__badge">人工培育</span>
+              ) : null}
             </button>
           );
         })}
 
         {fish.map((item) => {
           const position = getWorldFishPosition(item, habitats);
+          const photoUrl = fishPhotoUrls[item.id];
 
           return (
             <button
@@ -105,14 +111,22 @@ export function WorldScrollCanvas({
                 {
                   left: `${position.x}%`,
                   top: `${position.y}%`,
-                  '--fish-color': getFishColorToken(item.colors[0]),
                 } as CSSProperties
               }
               onClick={() => onFishSelect(item.id)}
-              aria-label={`${item.chineseName} ${item.commonName} 鱼影`}
+              aria-label={`${item.chineseName} ${item.commonName}`}
               aria-pressed={item.id === selectedFishId}
             >
-              <span className="fish-shadow-marker__body" aria-hidden="true" />
+              {photoUrl ? (
+                <img
+                  className="fish-shadow-marker__photo"
+                  src={photoUrl}
+                  alt={item.chineseName}
+                  loading="lazy"
+                />
+              ) : (
+                <span className="fish-shadow-marker__body" aria-hidden="true" />
+              )}
               <span className="fish-shadow-marker__label">{item.chineseName}</span>
             </button>
           );

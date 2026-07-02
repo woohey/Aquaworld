@@ -34,7 +34,7 @@ describe('WorldScrollCanvas', () => {
       '--basin-x': '67%',
       '--basin-y': '60%',
     });
-    expect(within(canvas).getByRole('button', { name: '浅水缓流与适应型水域 流域' })).toHaveStyle({
+    expect(within(canvas).getByRole('button', { name: '适应型观赏鱼群落 流域' })).toHaveStyle({
       '--basin-x': '60%',
       '--basin-y': '50%',
     });
