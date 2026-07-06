@@ -2,17 +2,13 @@
 
 ## Content Goal
 
-For v0.1, keep the atlas curated and complete instead of broad and thin.
+v0.11 completed the content review pass: 7 habitats, 42 fish entries, all data audited and corrected. Every fish has a custom Chinese ink-wash illustration and 4-frame sprite animation.
 
-Target size:
+v0.2 targets:
 
-- 7 habitats.
-- 42 fish entries currently.
-- 45-60 fish entries total for v0.1 if expansion still feels useful.
-- 5-8 fish per habitat where possible.
-- All species entries complete enough to stand alone in a detail panel.
-
-Current coverage is balanced: every habitat has 6 fish entries. The next content pass should favor quality, wording, and source confidence over adding many more species.
+- 7 habitats (unchanged).
+- 42 fish entries (may expand to 49-56 in v0.2).
+- Quality, storytelling, and source confidence over volume.
 
 ## Entry Checklist
 
@@ -111,7 +107,7 @@ Current entries:
 - Platy
 - Molly
 - Medaka Ricefish
-- Small Barb
+- Cherry Barb
 - Blue Gourami
 
 Good additions:
@@ -128,7 +124,7 @@ Current entries:
 
 - Swordtail
 - Firemouth Cichlid
-- Central American Livebearer
+- Sailfin Molly
 - Convict Cichlid
 - Texas Cichlid
 - Pearlscale Cichlid
@@ -147,7 +143,7 @@ Current entries:
 
 - Clownfish
 - Blue Tang
-- Yellow Tang
+- Lyretail Anthias
 - Damselfish
 - Reef Goby
 - Flame Angelfish
@@ -166,7 +162,7 @@ Current entries:
 
 - White Cloud Mountain Minnow
 - Paradise Fish
-- Roundtail Paradise Fish
+- Hillstream Loach
 - Chinese Bitterling
 - Chinese Medaka
 - Stream Goby
